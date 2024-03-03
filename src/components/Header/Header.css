@@ -4,6 +4,7 @@
 }
 
 .header__logo {
+  cursor: pointer;
   display: block;
   width: 236px;
   height: 60px;
