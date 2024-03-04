@@ -1,6 +1,19 @@
 import "./Auth.css";
+import { useState } from "react";
 
-const Auth = ({ propWord }) => {
+const Auth = ({ propWord, onClickAuth }) => {
+
+  const [password, setPassword] = useState('')
+  const [email, setEmail] = useState('')
+
+  const passwordOnChangeHandler = (value) => {
+    setPassword(value)
+  }
+
+  const emailOnChangeHandler = (value) => {
+    setEmail(value)
+  }
+
   return (
     <>
       <div className="container">
@@ -14,6 +27,8 @@ const Auth = ({ propWord }) => {
                   className="auth__input"
                   type="email"
                   placeholder="Email"
+                  value={email}
+                  onChange={(e) => emailOnChangeHandler(e.target.value)}
                 ></input>
               </div>
               <div className="auth__field">
@@ -21,10 +36,12 @@ const Auth = ({ propWord }) => {
                   className="auth__input"
                   type="password"
                   placeholder="Password"
+                  value={password}
+                  onChange={(e) => passwordOnChangeHandler(e.target.value)}
                 ></input>
               </div>
             </div>
-            <button className="auth__btn">{propWord}</button>
+            <button className="auth__btn" onClick={() => {onClickAuth(email, password)}}>{propWord}</button>
           </div>
         </div>
       </div>

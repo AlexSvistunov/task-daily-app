@@ -1,4 +1,5 @@
 const ROUTES = {
+  ROOTPAGE: '/',
   LANDINGPAGE: '/landingpage',
   TODOAPP: '/todoapp',
   LOGIN: '/login',

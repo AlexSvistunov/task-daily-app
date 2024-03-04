@@ -13,3 +13,18 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+.header__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header__links {
+  display: flex;
+  gap: 20px;
+}
+
+.header__link {
+  font-size: 18px;
+}
