@@ -1,4 +1,5 @@
 import Header from "../../components/Header/Header";
+import Hero from "../../components/Hero/Hero";
 
 const LandingPage = () => {
   return (
@@ -6,7 +7,7 @@ const LandingPage = () => {
       <Header />
       <section>
         <div className="container">
-          <h1>LANDINGPAGE</h1>
+          <Hero/>
         </div>
       </section>
     </>
