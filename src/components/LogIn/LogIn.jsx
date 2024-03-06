@@ -16,7 +16,7 @@ const LogIn = () => {
     const auth = getAuth()
     signInWithEmailAndPassword(auth, email, password)
       .then((userDetails) => {
-        console.log(userDetails);
+
         dispatch(setUser({email}))
         navigate(ROUTES.LANDINGPAGE)
       })
