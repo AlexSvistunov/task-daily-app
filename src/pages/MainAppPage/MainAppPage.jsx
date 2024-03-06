@@ -1,38 +1,39 @@
+import { useState } from "react";
+import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
+import Aside from "../../components/Aside/Aside";
+import { useDispatch, useSelector } from "react-redux";
+import { removeUser } from "../../store/slices/userSlice";
+
+import './MainAppPage.css'
+
 const MainAppPage = () => {
+  const dispatch = useDispatch()
+  const email = useSelector(state => state.user.email)
+  console.log(email);
+
+  const logOutHandler = () => {
+    dispatch(removeUser())
+  }
+ 
+
   return (
     <>
-      <div>
-        <aside>
-          <a className="logo"></a>
-          {/* CALENDAR */}
-          <div className="tasks">
-            <h3 className="tasks__title">Tasks</h3>
-            <div>
-              <span>Today</span>
-              <span>2</span>
+      <div className="page-app">
+
+        <Aside/>
+
+        <div className="page-app__main">
+          <header className="page-app__header">
+            {email && 
+            <div style={{display: 'flex', alignItems: 'center', gap: '20px'}}>
+              <span>{email}</span>
+              <button onClick={logOutHandler}>Log out</button>
+
             </div>
-          </div>
-
-          <div className="lists">
-            <h3 className="lists__title">Lists</h3>
-            <div>
-              <div>
-                <span>Daily Routine</span>
-                <span>2</span>
-              </div>
-
-              <div>
-                <span>Study</span>
-                <span>0</span>
-              </div>
-            </div>
-          </div>
-        </aside>
-
-        <div>
-          <header></header>
+            }
+          </header>
           <main>
-            Today
             <img src=""></img>
           </main>
         </div>

@@ -1,0 +1,13 @@
+.page-app {
+  display: flex;
+}
+
+.page-app__main {
+  flex: 1 1 auto;
+}
+
+.page-app__header {
+  padding: 15px;
+  display: flex;
+  justify-content: flex-end;
+}

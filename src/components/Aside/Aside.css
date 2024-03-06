@@ -1,0 +1,110 @@
+.aside {
+  min-height: 100vh;
+  padding: 10px 0px 10px 10px;
+  max-width: 320px;
+  width: 100%;
+  border-right: 2px solid rgba(173, 181, 189, 0.6);
+}
+
+.aside__logo {
+  margin-bottom: 20px;
+}
+
+.aside__calendar {
+  margin-bottom: 32px;
+}
+
+.aside__inner {
+  display: flex;
+  flex-direction: column;
+}
+
+.tasks {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.tasks__title {
+  margin: 0;
+  margin-bottom: 8px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 120%;
+  color: #343a40;
+}
+
+.task {
+  min-height: 60px;
+  padding: 9px 12px;
+  background-color: #F8F9FA;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.task__name {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 120%;
+  color: #000;
+}
+
+.task__amount {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 120%;
+  color: #000;
+}
+
+.lists {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 2px;
+  flex-direction: column;
+}
+
+.list {
+  min-height: 60px;
+  padding: 9px 12px;
+  background-color: #F8F9FA;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.list__title {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 120%;
+  color: #000;
+}
+
+.list__amount {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 120%;
+  color: #000;
+}
+
+.react-calendar {
+  font-family: var(--font-family);
+  border: none;
+  width: 100%;
+}
+
+.react-calendar button {
+  border-radius: 100%;
+  font-weight: 500;
+  color: rgba(30, 28, 28, 0.8);
+}
+
+.react-calendar__tile--active  {
+  background-color: #ADF7B6;
+
+}
+

@@ -1,4 +1,4 @@
-import React from 'react'
+
 import Auth from '../Auth/Auth'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
@@ -15,7 +15,7 @@ const LogIn = () => {
   const onClickAuth = (email, password) => {
     const auth = getAuth()
     signInWithEmailAndPassword(auth, email, password)
-      .then((userDetails) => {
+      .then(() => {
 
         dispatch(setUser({email}))
         navigate(ROUTES.LANDINGPAGE)

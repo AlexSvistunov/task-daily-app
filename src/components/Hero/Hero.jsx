@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
+import { useAuth } from "../../hooks/use-auth";
+
 import "./Hero.css";
+import ROUTES from "../../utils/routes";
 
 const Hero = () => {
+  const { isAuth } = useAuth();
   return (
     <section className="hero">
       <div className="container">
@@ -13,7 +17,7 @@ const Hero = () => {
             <span className="hero__subtitle">
               Your tasks, your rules, our support.
             </span>
-            <Link className="hero__link">Get started</Link>
+            <Link className="hero__link" to={isAuth ? ROUTES.TODOAPP : ROUTES.REGISTER}>Get started</Link>
           </div>
           <div className="hero__images">
             <img
