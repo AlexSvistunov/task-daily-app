@@ -15,9 +15,7 @@ const SignUp = () => {
 
   const addUserToDataBase = async (email) => {
     await setDoc(doc(db, "users", email), {
-      additionalInfo: {
-        email,
-      }
+      
     });
   };
 

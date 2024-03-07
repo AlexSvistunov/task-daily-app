@@ -8,6 +8,8 @@ import { setDoc } from "firebase/firestore";
 import { useAuth } from "../../hooks/use-auth";
 import { arrayUnion } from "firebase/firestore";
 
+import { getDoc } from "firebase/firestore";
+
 const CreateTask = () => {
   const [title, setTitle] = useState('')
   const [descr, setDescr] = useState('');
@@ -22,6 +24,18 @@ const CreateTask = () => {
     });
   };
 
+  const getDataBaseData = async (email) => {
+    const myData = doc(db, 'users', email)
+    const docSnap = await getDoc(myData);
+
+    if (docSnap.exists()) {
+      console.log("Document data:", docSnap.data());
+    } else {
+      // docSnap.data() will be undefined in this case
+      console.log("No such document!");
+    }
+  }
+
 
   // we need to save our tasks in user's fields
   return (
@@ -29,6 +43,7 @@ const CreateTask = () => {
       <input placeholder='Title' value={title} onChange={(e) =>  setTitle(e.target.value)}></input>
       <input placeholder='Descr' value={descr} onChange={(e) =>  setDescr(e.target.value)}></input>
       <button onClick={() => addTask(title, descr, email)}>Create task</button>
+      <button onClick={() => getDataBaseData(email)}>Get data</button>
     </div>
   )
 }
