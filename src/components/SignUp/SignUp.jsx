@@ -6,21 +6,19 @@ import { useDispatch } from "react-redux";
 import { setUser } from "../../store/slices/userSlice";
 import { collection, addDoc, getDocs } from "firebase/firestore";
 import { db } from "../../firebase/firebase";
+import { setDoc } from "firebase/firestore";
+import { doc } from "firebase/firestore";
 
 const SignUp = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const addUserToDataBase = async (email) => {
-    try {
-      const docRef = await addDoc(collection(db, "users"), {
-        mail: email
-      });
-    
-      console.log("Document written with ID: ", docRef.id);
-    } catch (e) {
-      console.error("Error adding document: ", e);
-    }
+    await setDoc(doc(db, "users", email), {
+      additionalInfo: {
+        email,
+      }
+    });
   };
 
   const onClickAuth = (email, password) => {

@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { removeUser } from "../../store/slices/userSlice";
 
 import './MainAppPage.css'
+import CreateTask from "../../components/CreateTask/CreateTask";
 
 const MainAppPage = () => {
   const dispatch = useDispatch()
@@ -35,6 +36,7 @@ const MainAppPage = () => {
           </header>
           <main>
             <img src=""></img>
+            <CreateTask/>
           </main>
         </div>
       </div>
