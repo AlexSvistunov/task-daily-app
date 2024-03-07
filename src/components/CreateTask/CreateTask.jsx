@@ -7,10 +7,19 @@ import { doc } from "firebase/firestore";
 import { setDoc } from "firebase/firestore";
 import { useAuth } from "../../hooks/use-auth";
 import { arrayUnion } from "firebase/firestore";
+import { useEffect } from "react";
 
 import { getDoc } from "firebase/firestore";
 
 const CreateTask = () => {
+
+  const [userData, setUserData] = useState([]);
+  console.log(userData);
+
+  useEffect(() => {
+    getDataBaseData(email)
+  }, []);
+
   const [title, setTitle] = useState('')
   const [descr, setDescr] = useState('');
 
@@ -30,9 +39,11 @@ const CreateTask = () => {
 
     if (docSnap.exists()) {
       console.log("Document data:", docSnap.data());
+      setUserData(docSnap.data())
+      return docSnap.data()
     } else {
-      // docSnap.data() will be undefined in this case
       console.log("No such document!");
+      return []
     }
   }
 
@@ -44,6 +55,10 @@ const CreateTask = () => {
       <input placeholder='Descr' value={descr} onChange={(e) =>  setDescr(e.target.value)}></input>
       <button onClick={() => addTask(title, descr, email)}>Create task</button>
       <button onClick={() => getDataBaseData(email)}>Get data</button>
+
+      {userData.todos && userData.todos.map((el) => (
+        <div key={el.title}>{el.title}</div>
+      ))}
     </div>
   )
 }
