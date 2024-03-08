@@ -11,3 +11,12 @@
   display: flex;
   justify-content: flex-end;
 }
+
+.title {
+  margin: 0;
+  margin-bottom: 37px;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 120%;
+  color: #212529;
+}

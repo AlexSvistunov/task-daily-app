@@ -13,7 +13,7 @@ import { getTodos } from "../../store/slices/todoSlice";
 import { getDoc } from "firebase/firestore";
 import { useDispatch, useSelector } from "react-redux";
 
-const CreateTask = () => {
+const CreateTask = ({currentDay}) => {
   const dispatch = useDispatch()
 
   const [userData, setUserData] = useState([]);
@@ -23,19 +23,26 @@ const CreateTask = () => {
   const [descr, setDescr] = useState("");
 
   const { email } = useAuth();
+
   useEffect(() => {
     dispatch(
       getTodos(email)
     )
   }, [])
 
+  useEffect(() => {
+    dispatch(
+      getTodos(email)
+    )
+  }, [userData])
+
   const todos = useSelector(state => state.todos.todoList)
   console.log(todos);
 
-  const addTask = async (title, descr, email) => {
+  const addTask = async (title, descr, email, day) => {
     const theDoc = doc(db, "users", email);
     await updateDoc(theDoc, {
-      todos: arrayUnion({ title, descr }),
+      todos: arrayUnion({ title, descr, day }),
     });
 
     getDataBaseData(email);
@@ -67,7 +74,7 @@ const CreateTask = () => {
         value={descr}
         onChange={(e) => setDescr(e.target.value)}
       ></input>
-      <button onClick={() => addTask(title, descr, email)}>Create task</button>
+      <button onClick={() => addTask(title, descr, email, currentDay)}>Create task</button>
       <button onClick={() => getDataBaseData(email)}>Get data</button>
 
       {todos.todos &&

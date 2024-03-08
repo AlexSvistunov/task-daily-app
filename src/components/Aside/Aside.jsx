@@ -3,12 +3,8 @@ import Calendar from "react-calendar";
 
 import "./Aside.css";
 
-const Aside = () => {
-  const [currentDate, setCurrentDate] = useState(new Date());
+const Aside = ({currentDay, changeDay}) => {
 
-  const currentDateHandler = (e) => {
-    setCurrentDate(e);
-  };
 
   return (
     <aside className="aside">
@@ -16,8 +12,8 @@ const Aside = () => {
         <a className="logo aside__logo"></a>
         <Calendar
           className="aside__calendar"
-          value={currentDate}
-          onChange={currentDateHandler}
+          value={currentDay}
+          onChange={changeDay}
         />
 
         <ul className="tasks">

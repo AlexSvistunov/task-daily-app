@@ -13,16 +13,21 @@ const MainAppPage = () => {
   const email = useSelector(state => state.user.email)
   console.log(email);
 
+  const [currentDay, setCurrentDay] = useState(new Date())
+
+  const changeDay = (value) => {
+    setCurrentDay(value)
+  }
+
   const logOutHandler = () => {
     dispatch(removeUser())
   }
  
-
   return (
     <>
       <div className="page-app">
 
-        <Aside/>
+        <Aside currentDay={currentDay} changeDay={changeDay}/>
 
         <div className="page-app__main">
           <header className="page-app__header">
@@ -35,8 +40,8 @@ const MainAppPage = () => {
             }
           </header>
           <main>
-            <img src=""></img>
-            <CreateTask/>
+            <h1 className="title">{currentDay.toDateString()}</h1>
+            <CreateTask currentDay={currentDay}/>
           </main>
         </div>
       </div>
