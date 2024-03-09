@@ -38,10 +38,10 @@ const CreateTask = ({ currentDay, showListHandler}) => {
   const todos = useSelector((state) => state.todos.todoList);
   console.log(todos);
 
-  const addTask = async (title, descr, email, day) => {
+  const addTask = async (title, descr, email, day, color) => {
     const theDoc = doc(db, "users", email);
     await updateDoc(theDoc, {
-      todos: arrayUnion({ title, descr, day }),
+      todos: arrayUnion({ title, descr, day, color }),
     });
 
     getDataBaseData(email);
@@ -392,31 +392,13 @@ const CreateTask = ({ currentDay, showListHandler}) => {
 
       <button className="new-task__btn" onClick={() => 
        {
-        addTask(title, descr, email, currentDay.toLocaleDateString())
+        addTask(title, descr, email, currentDay.toLocaleDateString(), currentColor[1])
         showListHandler()
        }
       }>
         <span className="material-symbols-outlined">check</span>
       </button>
-      {/* 
-      
-      <input
-        placeholder="Title"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-      ></input>
-      <input
-        placeholder="Descr"
-        value={descr}
-        onChange={(e) => setDescr(e.target.value)}
-      ></input>
-      <button onClick={() => addTask(title, descr, email, currentDay)}>
-        Create task
-      </button>
-      <button onClick={() => getDataBaseData(email)}>Get data</button> */}
 
-      {todos.todos &&
-        todos.todos.map((el) => <div key={el.title}>{el.title}</div>)}
     </section>
   );
 };

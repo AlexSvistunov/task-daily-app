@@ -28,7 +28,7 @@ const Aside = ({currentDay, changeDay}) => {
           <h3 className="lists__title">Lists</h3>
           <li className="list">
             <span className="list__title">Daily Routine</span>
-            <span className="list__amont">2</span>
+            <span className="list__amount">2</span>
           </li>
 
           <li className="list">

@@ -5,15 +5,9 @@ import { useAuth } from "../../hooks/use-auth";
 
 import "./TaskList.css";
 const TaskList = ({showListHandler, currentDay}) => {
-  console.log(currentDay.toISOString());
+
   const todos = useSelector((state) => state.todos.todoList);
   const todosForDate = todos?.todos?.filter((el) => el['day'] === currentDay.toLocaleDateString())
-  console.log(todosForDate);
-  // console.log(currentDay === todos.todos[0]['date']);
-  // console.log(todos.todos[0]['day']);
-  // console.log(currentDay.toISOString());
-  // console.log(todosForDate);
-  // console.log(todos);
   const dispatch = useDispatch();
   const { email } = useAuth();
 
@@ -21,19 +15,15 @@ const TaskList = ({showListHandler, currentDay}) => {
     dispatch(getTodos(email));
   }, []);
 
-  // useEffect(() => {
-  //   dispatch(getTodos(email));
-  // }, [userData]);
 
-  console.log(todos);
   return (
     <section className="task-list">
-      <ul className="tasks">
+      <ul className="tasks-list">
         {todosForDate &&
           todosForDate.map((el) => (
-            <li key={el.title} className="task">
-              <input className="task__checkbox" type="checkbox"></input>
-              <span>{el.title}</span>
+            <li key={el.title} className="tasks-list__task list-task" style={{backgroundColor: el.color}}>
+              <input className="list-task__checkbox" type="checkbox"></input>
+              <span className='list-task__title'>{el.title}</span>
             </li>
           ))}
       </ul>

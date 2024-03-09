@@ -4,6 +4,8 @@
 
 .page-app__main {
   flex: 1 1 auto;
+  /* max-width: 1300px; */
+  padding: 0 15px;
 }
 
 .page-app__header {

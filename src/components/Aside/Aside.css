@@ -1,7 +1,7 @@
 .aside {
   min-height: 100vh;
-  padding: 10px 0px 10px 10px;
-  max-width: 320px;
+  padding: 10px 0px 10px 20px;
+  max-width: 500px;
   width: 100%;
   border-right: 2px solid rgba(173, 181, 189, 0.6);
 }
@@ -25,13 +25,14 @@
   padding: 0;
   display: flex;
   flex-direction: column;
+  margin-bottom: 25px;
 }
 
 .tasks__title {
   margin: 0;
   margin-bottom: 8px;
   font-weight: 700;
-  font-size: 16px;
+  font-size: 25px;
   line-height: 120%;
   color: #343a40;
 }
@@ -47,7 +48,7 @@
 
 .task__name {
   font-weight: 400;
-  font-size: 18px;
+  font-size: 22px;
   line-height: 120%;
   color: #000;
 }
@@ -57,6 +58,7 @@
   font-size: 18px;
   line-height: 120%;
   color: #000;
+  font-size: 25px;
 }
 
 .lists {
@@ -66,6 +68,12 @@
   display: flex;
   gap: 2px;
   flex-direction: column;
+}
+
+.lists__title {
+  margin: 0;
+  font-size: 25px;
+  margin-bottom: 8px;
 }
 
 .list {
@@ -79,16 +87,16 @@
 
 .list__title {
   font-weight: 400;
-  font-size: 18px;
+  font-size: 22px;
   line-height: 120%;
   color: #000;
 }
 
 .list__amount {
   font-weight: 400;
-  font-size: 18px;
   line-height: 120%;
   color: #000;
+  font-size: 25px;
 }
 
 .react-calendar {
@@ -101,10 +109,16 @@
   border-radius: 100%;
   font-weight: 500;
   color: rgba(30, 28, 28, 0.8);
+  font-size: 21px;
 }
 
 .react-calendar__tile--active  {
   background-color: #ADF7B6;
 
+}
+
+.react-calendar__month-view__weekdays__weekday {
+  padding: 0.5em;
+  font-size: 16px;
 }
 
