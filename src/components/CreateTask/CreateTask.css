@@ -42,9 +42,24 @@
   color: #000;
 }
 
+.new-task__color-picking {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.new-task__color-picked {
+  color: #000;
+  font-size: 18px;
+}
+
+.new-task__color-picked span {
+  font-weight: 700;
+}
+
 .new-task__color-title {
   margin: 0;
-  margin-bottom: 20px;
   font-weight: 700;
   font-size: 18px;
   color: rgba(30, 28, 28, 0.8);
