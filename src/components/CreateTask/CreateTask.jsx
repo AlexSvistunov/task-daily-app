@@ -15,7 +15,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import "./CreateTask.css";
 
-const CreateTask = ({ currentDay }) => {
+const CreateTask = ({ currentDay, showListHandler}) => {
   const dispatch = useDispatch();
 
   const [userData, setUserData] = useState([]);
@@ -105,9 +105,9 @@ const CreateTask = ({ currentDay }) => {
               cy="25.6829"
               r="23.2752"
               fill="#ADF7B6"
-              fill-opacity="0.6"
+              fillOpacity="0.6"
               stroke="#EDEAEA"
-              stroke-width="4.81555"
+              strokeWidth="4.81555"
             />
           </svg>
         </button>
@@ -125,9 +125,9 @@ const CreateTask = ({ currentDay }) => {
               cy="25.6829"
               r="23.2752"
               fill="#A817C0"
-              fill-opacity="0.6"
+              fillOpacity="0.6"
               stroke="#EDEAEA"
-              stroke-width="4.81555"
+              strokeWidth="4.81555"
             />
           </svg>
         </button>
@@ -145,9 +145,9 @@ const CreateTask = ({ currentDay }) => {
               cy="25.6829"
               r="23.2752"
               fill="#FFC09F"
-              fill-opacity="0.6"
+              fillOpacity="0.6"
               stroke="#EDEAEA"
-              stroke-width="4.81555"
+              strokeWidth="4.81555"
             />
           </svg>
         </button>
@@ -165,9 +165,9 @@ const CreateTask = ({ currentDay }) => {
               cy="25.6829"
               r="23.2752"
               fill="#B0FFFA"
-              fill-opacity="0.6"
+              fillOpacity="0.6"
               stroke="#EDEAEA"
-              stroke-width="4.81555"
+              strokeWidth="4.81555"
             />
           </svg>
         </button>
@@ -185,9 +185,9 @@ const CreateTask = ({ currentDay }) => {
               cy="25.6829"
               r="23.2752"
               fill="#FCFF52"
-              fill-opacity="0.94"
+              fillOpacity="0.94"
               stroke="#EDEAEA"
-              stroke-width="4.81555"
+              strokeWidth="4.81555"
             />
           </svg>
         </button>
@@ -206,7 +206,7 @@ const CreateTask = ({ currentDay }) => {
               r="23.2752"
               fill="#4EFF31"
               stroke="#EDEAEA"
-              stroke-width="4.81555"
+              strokeWidth="4.81555"
             />
           </svg>
         </button>
@@ -224,9 +224,9 @@ const CreateTask = ({ currentDay }) => {
               cy="25.6829"
               r="23.2752"
               fill="#5BFFD8"
-              fill-opacity="0.99"
+              fillOpacity="0.99"
               stroke="#EDEAEA"
-              stroke-width="4.81555"
+              strokeWidth="4.81555"
             />
           </svg>
         </button>
@@ -244,9 +244,9 @@ const CreateTask = ({ currentDay }) => {
               cy="25.6829"
               r="23.2752"
               fill="#0038FF"
-              fill-opacity="0.6"
+              fillOpacity="0.6"
               stroke="#EDEAEA"
-              stroke-width="4.81555"
+              strokeWidth="4.81555"
             />
           </svg>
         </button>
@@ -264,9 +264,9 @@ const CreateTask = ({ currentDay }) => {
               cy="25.6829"
               r="23.2752"
               fill="#622BFF"
-              fill-opacity="0.6"
+              fillOpacity="0.6"
               stroke="#EDEAEA"
-              stroke-width="4.81555"
+              strokeWidth="4.81555"
             />
           </svg>
         </button>
@@ -284,9 +284,9 @@ const CreateTask = ({ currentDay }) => {
               cy="25.6829"
               r="23.2752"
               fill="#D21DFF"
-              fill-opacity="0.85"
+              fillOpacity="0.85"
               stroke="#EDEAEA"
-              stroke-width="4.81555"
+              strokeWidth="4.81555"
             />
           </svg>
         </button>
@@ -304,9 +304,9 @@ const CreateTask = ({ currentDay }) => {
               cy="25.6829"
               r="23.2752"
               fill="#B92350"
-              fill-opacity="0.6"
+              fillOpacity="0.6"
               stroke="#EDEAEA"
-              stroke-width="4.81555"
+              strokeWidth="4.81555"
             />
           </svg>
         </button>
@@ -325,7 +325,7 @@ const CreateTask = ({ currentDay }) => {
               r="23.2752"
               fill="#FF0000"
               stroke="#EDEAEA"
-              stroke-width="4.81555"
+              strokeWidth="4.81555"
             />
           </svg>
         </button>
@@ -343,9 +343,9 @@ const CreateTask = ({ currentDay }) => {
               cy="25.6829"
               r="23.2752"
               fill="#E9E3E8"
-              fill-opacity="0.6"
+              fillOpacity="0.6"
               stroke="#EDEAEA"
-              stroke-width="4.81555"
+              strokeWidth="4.81555"
             />
           </svg>
         </button>
@@ -363,9 +363,9 @@ const CreateTask = ({ currentDay }) => {
               cy="25.6829"
               r="23.2752"
               fill="#554E55"
-              fill-opacity="0.6"
+              fillOpacity="0.6"
               stroke="#EDEAEA"
-              stroke-width="4.81555"
+              strokeWidth="4.81555"
             />
           </svg>
         </button>
@@ -388,8 +388,13 @@ const CreateTask = ({ currentDay }) => {
         </div>
       </div>
 
-      <button className="new-task__btn" onClick={() => addTask(title, descr, email, currentDay)}>
-        <span class="material-symbols-outlined">check</span>
+      <button className="new-task__btn" onClick={() => 
+       {
+        addTask(title, descr, email, currentDay)
+        showListHandler()
+       }
+      }>
+        <span className="material-symbols-outlined">check</span>
       </button>
       {/* 
       

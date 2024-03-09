@@ -1,0 +1,21 @@
+.task-list {
+  position: relative;
+}
+
+.task-list__btn {
+  position: fixed;
+  bottom: 2%;
+  right: 2%;
+  background: transparent;
+  border: none;
+  width: 56px;
+  height: 56px;
+  cursor: pointer;
+  border-radius: 100%;
+  background-color: #f8f9fa;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+

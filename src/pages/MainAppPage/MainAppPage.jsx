@@ -23,6 +23,10 @@ const MainAppPage = () => {
   const logOutHandler = () => {
     dispatch(removeUser())
   }
+
+  const showListHandler = () => {
+    setShowList(!showList)
+  }
   const todos = useSelector((state) => state.todos.todoList);
   console.log(todos);
  
@@ -44,7 +48,7 @@ const MainAppPage = () => {
           </header>
           <main>
             <h1 className="title">{currentDay.toDateString()}</h1>
-            {showList ? <TaskList/> : <CreateTask currentDay={currentDay}/>}
+            {showList ? <TaskList showListHandler={showListHandler}/> : <CreateTask currentDay={currentDay} showListHandler={showListHandler}/>}
           </main>
         </div>
       </div>
