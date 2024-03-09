@@ -48,7 +48,7 @@ const MainAppPage = () => {
           </header>
           <main>
             <h1 className="title">{currentDay.toDateString()}</h1>
-            {showList ? <TaskList showListHandler={showListHandler}/> : <CreateTask currentDay={currentDay} showListHandler={showListHandler}/>}
+            {showList ? <TaskList showListHandler={showListHandler} currentDay={currentDay}/> : <CreateTask currentDay={currentDay} showListHandler={showListHandler}/>}
           </main>
         </div>
       </div>

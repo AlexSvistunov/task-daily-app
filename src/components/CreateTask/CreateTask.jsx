@@ -65,6 +65,8 @@ const CreateTask = ({ currentDay, showListHandler}) => {
     setCurrentColor(color)
   }
 
+
+
   return (
     <section className="new-task">
       <h1 className="new-task__title">New Task</h1>
@@ -390,7 +392,7 @@ const CreateTask = ({ currentDay, showListHandler}) => {
 
       <button className="new-task__btn" onClick={() => 
        {
-        addTask(title, descr, email, currentDay)
+        addTask(title, descr, email, currentDay.toLocaleDateString())
         showListHandler()
        }
       }>
