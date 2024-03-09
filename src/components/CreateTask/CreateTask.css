@@ -1,0 +1,145 @@
+.new-task {
+  padding: 41px 24px;
+  position: relative;
+}
+
+.new-task__title {
+  margin: 0;
+  margin-bottom: 37px;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 120%;
+  color: #212529;
+}
+
+.new-task__fields {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 26px;
+}
+
+.new-task__field {
+  border-radius: 8px;
+  max-width: 1071px;
+  width: 100%;
+  padding: 16px;
+  min-height: 56px;
+  background: #f8f9fa;
+}
+
+.new-task__input {
+  display: block;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.6);
+  background-color: transparent;
+}
+
+.new-task__input::placeholder {
+  font-weight: 400;
+  font-size: 16px;
+  color: #000;
+}
+
+.new-task__color-title {
+  margin: 0;
+  margin-bottom: 20px;
+  font-weight: 700;
+  font-size: 18px;
+  color: rgba(30, 28, 28, 0.8);
+}
+
+.new-task__colors {
+  display: flex;
+  gap: 26px;
+  margin-bottom: 50px;
+}
+
+.new-task__color {
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  border-radius: 100%;
+}
+
+.new-task__color.new-task__color--active circle {
+  stroke: #000000;
+  stroke-width: 2px;
+}
+
+.new-task__options {
+  padding: 30px 60px 40px;
+  border-radius: 8px;
+  background-color: rgba(248, 249, 250, 0.8);
+}
+
+.new-task__tag {
+  padding: 20px;
+  border-radius: 13px;
+  max-width: 600px;
+  width: 100%;
+  min-height: 104px;
+  background: #fdfdfd;
+}
+
+.task-tag__title {
+  margin: 0;
+  margin-bottom: 15px;
+  font-weight: 700;
+  font-size: 18px;
+  color: rgba(30, 28, 28, 0.8);
+}
+
+.task-tag__input {
+  padding: 5px;
+  display: block;
+  width: 100%;
+  font-size: 20px;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.6);
+  margin-bottom: 25px;
+}
+
+.task-tag::placeholder {
+  font-weight: 400;
+  font-size: 16px;
+  color: rgba(30, 28, 28, 0.8);
+}
+
+.task-tag__filters {
+  display: flex;
+  gap: 24px;
+}
+
+.task-tag__filter {
+  background: #f8f9fa;
+  border: 2px solid #edeaea;
+  border-radius: 13px;
+  padding: 5px 15px;
+  font-weight: 500;
+  font-size: 16px;
+  color: rgba(30, 28, 28, 0.8);
+}
+
+.new-task__btn {
+  position: fixed;
+  bottom: 2%;
+  right: 2%;
+  justify-self: flex-end;
+  width: 56px;
+  height: 56px;
+  border-radius: 100%;
+  background-color: #f8f9fa;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  font-weight: 400;
+  font-size: 24px;
+  color: #000;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}

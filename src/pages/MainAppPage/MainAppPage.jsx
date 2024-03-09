@@ -7,12 +7,13 @@ import { removeUser } from "../../store/slices/userSlice";
 
 import './MainAppPage.css'
 import CreateTask from "../../components/CreateTask/CreateTask";
+import TaskList from "../../components/TaskList/TaskList";
 
 const MainAppPage = () => {
   const dispatch = useDispatch()
   const email = useSelector(state => state.user.email)
+  const [showList, setShowList] = useState(true)
   console.log(email);
-
   const [currentDay, setCurrentDay] = useState(new Date())
 
   const changeDay = (value) => {
@@ -22,6 +23,8 @@ const MainAppPage = () => {
   const logOutHandler = () => {
     dispatch(removeUser())
   }
+  const todos = useSelector((state) => state.todos.todoList);
+  console.log(todos);
  
   return (
     <>
@@ -41,7 +44,7 @@ const MainAppPage = () => {
           </header>
           <main>
             <h1 className="title">{currentDay.toDateString()}</h1>
-            <CreateTask currentDay={currentDay}/>
+            {showList ? <TaskList/> : <CreateTask currentDay={currentDay}/>}
           </main>
         </div>
       </div>
