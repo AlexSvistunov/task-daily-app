@@ -8,8 +8,8 @@
   right: 2%;
   background: transparent;
   border: none;
-  width: 56px;
-  height: 56px;
+  width: 80px;
+  height: 80px;
   cursor: pointer;
   border-radius: 100%;
   background-color: #f8f9fa;
@@ -17,6 +17,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.material-symbols-outlined  {
+  font-size: 35px;
 }
 
 .tasks-list {

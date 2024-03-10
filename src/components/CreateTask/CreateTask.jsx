@@ -23,6 +23,8 @@ const CreateTask = ({ currentDay, showListHandler }) => {
 
   const [title, setTitle] = useState("");
   const [descr, setDescr] = useState("");
+  const [tag, setTag] = useState("");
+
   const [currentColor, setCurrentColor] = useState(["Фисташковый", "#EDEAEA"]);
 
   const { email } = useAuth();
@@ -38,10 +40,10 @@ const CreateTask = ({ currentDay, showListHandler }) => {
   const todos = useSelector((state) => state.todos.todoList);
   console.log(todos);
 
-  const addTask = async (title, descr, email, day, color) => {
+  const addTask = async (title, descr, email, day, color, tag) => {
     const theDoc = doc(db, "users", email);
     await updateDoc(theDoc, {
-      todos: arrayUnion({ title, descr, day, color }),
+      todos: arrayUnion({ title, descr, day, color, tag}),
     });
 
     getDataBaseData(email);
@@ -64,6 +66,7 @@ const CreateTask = ({ currentDay, showListHandler }) => {
   const setColor = (color) => {
     setCurrentColor(color);
   };
+
 
   return (
     <section className="new-task">
@@ -92,7 +95,9 @@ const CreateTask = ({ currentDay, showListHandler }) => {
 
       <div className="new-task__color-picking">
         <h3 className="new-task__color-title">Card Color</h3>
-        <div className="new-task__color-picked">Your picked color is:  <span>{currentColor[0]}</span></div>
+        <div className="new-task__color-picked">
+          Your picked color is: <span>{currentColor[0]}</span>
+        </div>
       </div>
       <div className="new-task__colors">
         <button
@@ -479,11 +484,13 @@ const CreateTask = ({ currentDay, showListHandler }) => {
             className="task-tag__input"
             type="text"
             placeholder="Set a tag for your task"
+            value={tag}
+            onChange={(e) => setTag(e.target.value)}
           ></input>
           <div className="task-tag__filters">
-            <button className="task-tag__filter">Daily Routine</button>
-            <button className="task-tag__filter">Add more</button>
-            <button className="task-tag__filter">Study Routine</button>
+            <button className="task-tag__filter" onClick={() => setTag('Daily Routine')}>Daily Routine</button>
+            <button className="task-tag__filter" onClick={() => setTag('Everyday Routine')}>Everyday Routine</button>
+            <button className="task-tag__filter" onClick={() => setTag('Study Routine')}>Study Routine</button>
           </div>
         </div>
       </div>
@@ -496,7 +503,8 @@ const CreateTask = ({ currentDay, showListHandler }) => {
             descr,
             email,
             currentDay.toLocaleDateString(),
-            currentColor[1]
+            currentColor[1],
+            tag
           );
           showListHandler();
         }}

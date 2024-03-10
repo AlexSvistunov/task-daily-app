@@ -34,11 +34,13 @@
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.6);
   background-color: transparent;
+  padding: 15px;
+  font-size: 20px;
 }
 
 .new-task__input::placeholder {
   font-weight: 400;
-  font-size: 16px;
+  font-size: 20px;
   color: #000;
 }
 
@@ -137,6 +139,7 @@
   font-weight: 500;
   font-size: 16px;
   color: rgba(30, 28, 28, 0.8);
+  cursor: pointer;
 }
 
 .new-task__btn {
@@ -144,8 +147,8 @@
   bottom: 2%;
   right: 2%;
   justify-self: flex-end;
-  width: 56px;
-  height: 56px;
+  width: 85px;
+  height: 85px;
   border-radius: 100%;
   background-color: #f8f9fa;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);

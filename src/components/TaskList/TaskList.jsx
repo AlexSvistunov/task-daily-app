@@ -4,9 +4,11 @@ import { getTodos } from "../../store/slices/todoSlice";
 import { useAuth } from "../../hooks/use-auth";
 
 import "./TaskList.css";
+
 const TaskList = ({showListHandler, currentDay}) => {
 
   const todos = useSelector((state) => state.todos.todoList);
+  console.log(todos);
   const todosForDate = todos?.todos?.filter((el) => el['day'] === currentDay.toLocaleDateString())
   const dispatch = useDispatch();
   const { email } = useAuth();
