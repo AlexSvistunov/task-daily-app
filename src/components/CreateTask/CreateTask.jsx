@@ -43,6 +43,7 @@ const CreateTask = ({ currentDay, showListHandler}) => {
     });
 
     // как-нибудь вот так, а вообще может лучше все map сделать... и почему оно само придумывает 0, 1 это ключи или как???
+    // или вообще подключить realtime db =)
 
     getDataBaseData(email);
   };
