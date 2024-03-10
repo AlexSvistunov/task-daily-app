@@ -3,6 +3,9 @@ import { db } from "../../firebase/firebase";
 import { doc, updateDoc } from "firebase/firestore";
 import { arrayUnion } from "firebase/firestore";
 import { getTodos } from "../../store/slices/todoSlice";
+import { arrayRemove } from "firebase/firestore";
+
+import { FieldValue } from "firebase/firestore";
 
 import { useEffect } from "react";
 
@@ -19,20 +22,23 @@ const TaskModal = ({
   const dispatch = useDispatch();
   async function updateTitle(email, value) {
     const theDoc = doc(db, "users", email);
-    await updateDoc(theDoc, {
-      todos: {
-        title: value,
-        descr: dataModal["descr"],
-        day: dataModal["day"],
-        color: dataModal["color"],
-        tag: dataModal["tag"],
-      },
-    });
 
-    // ...todos
+    // await updateDoc(theDoc, {
+    //   todos: arrayRemove('0'),
+    // });
 
+    // await updateDoc(theDoc, {
+    //   [`todos.0`]: arrayRemove(),
+    // });
+
+    // await updateDoc(theDoc, {
+    //   todos: arrayUnion({
+    //     0: {
+    //       title: value,
+    //     },
+    //   }),
+    // });
   }
-
 
   console.log(dataModal);
   return (

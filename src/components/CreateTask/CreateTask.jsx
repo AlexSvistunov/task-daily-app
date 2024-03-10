@@ -39,7 +39,10 @@ const CreateTask = ({ currentDay, showListHandler}) => {
     const theDoc = doc(db, "users", email);
     await updateDoc(theDoc, {
       todos: arrayUnion({ title, descr, day, color, tag}),
+      // todos: arrayUnion({[email]: { title, descr, day, color, tag}}),
     });
+
+    // как-нибудь вот так, а вообще может лучше все map сделать... и почему оно само придумывает 0, 1 это ключи или как???
 
     getDataBaseData(email);
   };
