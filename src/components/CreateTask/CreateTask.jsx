@@ -15,15 +15,14 @@ import { useDispatch, useSelector } from "react-redux";
 
 import "./CreateTask.css";
 
-const CreateTask = ({ currentDay, showListHandler }) => {
+const CreateTask = ({ currentDay, showListHandler}) => {
   const dispatch = useDispatch();
 
-  const [userData, setUserData] = useState([]);
-  console.log(userData);
 
   const [title, setTitle] = useState("");
   const [descr, setDescr] = useState("");
   const [tag, setTag] = useState("");
+  const [userData, setUserData] = useState([]);
 
   const [currentColor, setCurrentColor] = useState(["Фисташковый", "#EDEAEA"]);
 
@@ -32,10 +31,6 @@ const CreateTask = ({ currentDay, showListHandler }) => {
   useEffect(() => {
     dispatch(getTodos(email));
   }, []);
-
-  useEffect(() => {
-    dispatch(getTodos(email));
-  }, [userData]);
 
   const todos = useSelector((state) => state.todos.todoList);
   console.log(todos);

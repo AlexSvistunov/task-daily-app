@@ -4,9 +4,9 @@ import Calendar from "react-calendar";
 
 import "./Aside.css";
 
-const Aside = ({currentDay, changeDay}) => {
-  const todos = useSelector((state) => state.todos.todoList);
-  const todosForDate = todos?.todos?.filter((el) => el['day'] === currentDay.toLocaleDateString())
+const Aside = ({ currentDay, changeDay }) => {
+  // const todos = useSelector((state) => state.todos.todoList);
+  // const todosForDate = todos?.todos?.filter((el) => el['day'] === currentDay.toLocaleDateString())
   return (
     <aside className="aside">
       <div className="aside__inner">
@@ -18,10 +18,12 @@ const Aside = ({currentDay, changeDay}) => {
         />
 
         <ul className="tasks">
-            <h3 className="tasks__title">Tasks</h3>
-            <li className="task">
+          <h3 className="tasks__title">Tasks</h3>
+          <li className="task">
             <span className="task__name">For this day</span>
-            <span className="task__amount">{todosForDate && todosForDate.length}</span>
+            <span className="task__amount">
+              {/* {todosForDate && todosForDate.length} */}
+            </span>
           </li>
         </ul>
 

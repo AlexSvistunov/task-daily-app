@@ -1,0 +1,35 @@
+.task-modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0,0, 0, 0.2)
+}
+
+
+.task-modal__inner {
+  padding: 50px;
+  position: relative;
+  max-width: 650px;
+  width: 100%;
+  min-height: 350px;
+  background-color: #fff;
+  border-radius: 15px;
+}
+
+.task-modal__close {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  font-size: 25px;
+  width: 25px;
+  height: 25px;
+}
