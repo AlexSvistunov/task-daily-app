@@ -15,17 +15,14 @@ import { useDispatch, useSelector } from "react-redux";
 
 import "./CreateTask.css";
 
-const CreateTask = ({ currentDay, showListHandler}) => {
+const CreateTask = ({ currentDate, showListHandler}) => {
   const dispatch = useDispatch();
-
 
   const [title, setTitle] = useState("");
   const [descr, setDescr] = useState("");
   const [tag, setTag] = useState("");
   const [userData, setUserData] = useState([]);
-
   const [currentColor, setCurrentColor] = useState(["Фисташковый", "#EDEAEA"]);
-
   const { email } = useAuth();
 
   useEffect(() => {
@@ -42,25 +39,9 @@ const CreateTask = ({ currentDay, showListHandler}) => {
       // todos: arrayUnion({[email]: { title, descr, day, color, tag}}),
     });
 
-    // как-нибудь вот так, а вообще может лучше все map сделать... и почему оно само придумывает 0, 1 это ключи или как???
-    // или вообще подключить realtime db =)
-
-    getDataBaseData(email);
+    dispatch(getTodos(email))
   };
 
-  const getDataBaseData = async (email) => {
-    const myData = doc(db, "users", email);
-    const docSnap = await getDoc(myData);
-
-    if (docSnap.exists()) {
-      console.log("Document data:", docSnap.data());
-      setUserData(docSnap.data());
-      return docSnap.data();
-    } else {
-      console.log("No such document!");
-      return [];
-    }
-  };
 
   const setColor = (color) => {
     setCurrentColor(color);
@@ -501,7 +482,7 @@ const CreateTask = ({ currentDay, showListHandler}) => {
             title,
             descr,
             email,
-            currentDay.toLocaleDateString(),
+            currentDate.toLocaleDateString(),
             currentColor[1],
             tag
           );

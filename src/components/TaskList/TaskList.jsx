@@ -7,25 +7,20 @@ import { useState } from "react";
 
 import "./TaskList.css";
 
-const TaskList = ({showListHandler, currentDay}) => {
-
+const TaskList = ({showListHandler, currentDate}) => {
 
   const [modalIsOpen, setModalIsOpen] = useState(false)
   const [dataModal, setDataModal] = useState(null)
 
-  const todos = useSelector((state) => state.todos.todoList);
-  console.log(todos);
-  const todosForDate = todos?.todos && Array.isArray(todos.todos) ? todos.todos.filter((el) => el['day'] === currentDay.toLocaleDateString()) : [];
-
-  const dispatch = useDispatch();
   const { email } = useAuth();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getTodos(email));
   }, []);
 
-  
-  console.log(dataModal);
+  const todos = useSelector((state) => state.todos.todoList);
+  const todosForDate = todos?.todos && Array.isArray(todos.todos) ? todos.todos.filter((el) => el['day'] === currentDate.toLocaleDateString()) : [];
 
   return (
     <section className="task-list">

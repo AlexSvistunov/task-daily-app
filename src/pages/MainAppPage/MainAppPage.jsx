@@ -11,12 +11,12 @@ import './MainAppPage.css'
 const MainAppPage = () => {
   const dispatch = useDispatch()
   const email = useSelector(state => state.user.email)
-  const [showList, setShowList] = useState(true)
-  console.log(email);
-  const [currentDay, setCurrentDay] = useState(new Date())
 
-  const changeDay = (value) => {
-    setCurrentDay(value)
+  const [showList, setShowList] = useState(true)
+  const [currentDate, setCurrentDate] = useState(new Date())
+
+  const changeDate = (value) => {
+    setCurrentDate(value)
   }
 
   const logOutHandler = () => {
@@ -27,13 +27,14 @@ const MainAppPage = () => {
     setShowList(!showList)
   }
   const todos = useSelector((state) => state.todos.todoList);
-  console.log(todos);
- 
+
+  // возможно тут диспатчить запрос
+
   return (
     <>
       <div className="page-app">
 
-        <Aside currentDay={currentDay} changeDay={changeDay}/>
+        <Aside currentDay={currentDate} changeDay={changeDate}/>
 
         <div className="page-app__main">
           <header className="page-app__header">
@@ -45,8 +46,8 @@ const MainAppPage = () => {
             }
           </header>
           <main>
-            <h1 className="title">{currentDay.toDateString()}</h1>
-            {showList ? <TaskList showListHandler={showListHandler} currentDay={currentDay}/> : <CreateTask currentDay={currentDay} showListHandler={showListHandler}/>}
+            <h1 className="title">{currentDate.toDateString()}</h1>
+            {showList ? <TaskList showListHandler={showListHandler} currentDate={currentDate}/> : <CreateTask currentDate={currentDate} showListHandler={showListHandler}/>}
           </main>
         </div>
       </div>

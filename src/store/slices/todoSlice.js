@@ -9,7 +9,6 @@ export const getTodos = createAsyncThunk(
   async (email, thunkAPI) => {
     const myData = doc(db, 'users', email)
     const docSnap = await getDoc(myData)
-
     if (docSnap.exists()) {
       return docSnap.data();
     } else {
