@@ -15,6 +15,9 @@ import { useDispatch, useSelector } from "react-redux";
 
 import "./CreateTask.css";
 
+// editing through redux thunk
+// when additing and query is going -> spinner
+
 const CreateTask = ({ currentDate, showListHandler}) => {
   const dispatch = useDispatch();
 
@@ -42,11 +45,9 @@ const CreateTask = ({ currentDate, showListHandler}) => {
     dispatch(getTodos(email))
   };
 
-
   const setColor = (color) => {
     setCurrentColor(color);
   };
-
 
   return (
     <section className="new-task">
