@@ -22,3 +22,51 @@
   line-height: 120%;
   color: #212529;
 }
+
+.page-app__header-theme {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  width: 36px;
+  height: 36px;
+  background-image: url('/src/assets/images/theme.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  cursor: pointer;
+
+}
+
+.page-app__header-user {
+  margin: 0;
+  padding: 0;
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: transparent;
+  background-image: url('/src/assets//images/user.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  cursor: pointer;
+}
+
+.user {
+  position: relative;
+}
+
+.user__dropdown {
+  position: absolute;
+  top: 100%;
+  left: -40px;
+  opacity: 0;
+  z-index: 20;
+  visibility: hidden;
+  display: none;
+}
+
+.user__dropdown.user__dropdown--active {
+  opacity: 1;
+  visibility: visible;
+  display: flex;
+  flex-direction: column;
+}

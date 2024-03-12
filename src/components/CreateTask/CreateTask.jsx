@@ -37,10 +37,10 @@ const CreateTask = ({ currentDate, showListHandler }) => {
 
   const addTask = async (title, descr, email, day, color, tag) => {
     const theDoc = doc(db, "users", email);
-    // await updateDoc(theDoc, {
-    //   todos: arrayUnion({ title, descr, day, color, tag}),
-    //   // todos: arrayUnion({[email]: { title, descr, day, color, tag}}),
-    // });
+    await updateDoc(theDoc, {
+      todos: arrayUnion({ title, descr, day, color, tag}),
+
+    });
 
     // await setDoc(doc(db, "users", email), {
     //   todos: {
@@ -51,35 +51,6 @@ const CreateTask = ({ currentDate, showListHandler }) => {
     //     tag
     //   }
     // }, {merge: true});
-
-    // await setDoc(doc(db, "cities", "LA"), {
-    //   name: "Los Angeles",
-    //   state: "CA",
-    //   country: "USA"
-    // });
-
-    //     const cityRef = doc(db, 'cities', 'BJ');
-    // setDoc(cityRef, { capital: true }, { merge: true });
-
-    const reference = doc(collection(db, 'users', email, '1'))
-
-     await setDoc(reference), {
-      title,
-      descr,
-      day,
-      color,
-      tag,
-    };
-
-//     const docsRef = doc(db, 'users', email, '1', '0rHMLV6CJWEFhOk0wjS7  ')
-//     const docSnap = await getDoc(docsRef);
-
-// if (docSnap.exists()) {
-//   console.log("Document data:", docSnap.data());
-// } else {
-//   // docSnap.data() will be undefined in this case
-//   console.log("No such document!");
-// }
 
     dispatch(getTodos(email));
   };
