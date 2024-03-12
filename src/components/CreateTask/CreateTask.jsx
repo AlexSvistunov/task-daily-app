@@ -18,7 +18,7 @@ import "./CreateTask.css";
 // editing through redux thunk
 // when additing and query is going -> spinner
 
-const CreateTask = ({ currentDate, showListHandler}) => {
+const CreateTask = ({ currentDate, showListHandler }) => {
   const dispatch = useDispatch();
 
   const [title, setTitle] = useState("");
@@ -37,12 +37,51 @@ const CreateTask = ({ currentDate, showListHandler}) => {
 
   const addTask = async (title, descr, email, day, color, tag) => {
     const theDoc = doc(db, "users", email);
-    await updateDoc(theDoc, {
-      todos: arrayUnion({ title, descr, day, color, tag}),
-      // todos: arrayUnion({[email]: { title, descr, day, color, tag}}),
-    });
+    // await updateDoc(theDoc, {
+    //   todos: arrayUnion({ title, descr, day, color, tag}),
+    //   // todos: arrayUnion({[email]: { title, descr, day, color, tag}}),
+    // });
 
-    dispatch(getTodos(email))
+    // await setDoc(doc(db, "users", email), {
+    //   todos: {
+    //     title,
+    //     descr,
+    //     day,
+    //     color,
+    //     tag
+    //   }
+    // }, {merge: true});
+
+    // await setDoc(doc(db, "cities", "LA"), {
+    //   name: "Los Angeles",
+    //   state: "CA",
+    //   country: "USA"
+    // });
+
+    //     const cityRef = doc(db, 'cities', 'BJ');
+    // setDoc(cityRef, { capital: true }, { merge: true });
+
+    const reference = doc(collection(db, 'users', email, '1'))
+
+     await setDoc(reference), {
+      title,
+      descr,
+      day,
+      color,
+      tag,
+    };
+
+//     const docsRef = doc(db, 'users', email, '1', '0rHMLV6CJWEFhOk0wjS7  ')
+//     const docSnap = await getDoc(docsRef);
+
+// if (docSnap.exists()) {
+//   console.log("Document data:", docSnap.data());
+// } else {
+//   // docSnap.data() will be undefined in this case
+//   console.log("No such document!");
+// }
+
+    dispatch(getTodos(email));
   };
 
   const setColor = (color) => {
@@ -469,9 +508,24 @@ const CreateTask = ({ currentDate, showListHandler}) => {
             onChange={(e) => setTag(e.target.value)}
           ></input>
           <div className="task-tag__filters">
-            <button className="task-tag__filter" onClick={() => setTag('Daily Routine')}>Daily Routine</button>
-            <button className="task-tag__filter" onClick={() => setTag('Everyday Routine')}>Everyday Routine</button>
-            <button className="task-tag__filter" onClick={() => setTag('Study Routine')}>Study Routine</button>
+            <button
+              className="task-tag__filter"
+              onClick={() => setTag("Daily Routine")}
+            >
+              Daily Routine
+            </button>
+            <button
+              className="task-tag__filter"
+              onClick={() => setTag("Everyday Routine")}
+            >
+              Everyday Routine
+            </button>
+            <button
+              className="task-tag__filter"
+              onClick={() => setTag("Study Routine")}
+            >
+              Study Routine
+            </button>
           </div>
         </div>
       </div>
