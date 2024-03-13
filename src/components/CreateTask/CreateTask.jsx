@@ -42,16 +42,6 @@ const CreateTask = ({ currentDate, showListHandler }) => {
 
     });
 
-    // await setDoc(doc(db, "users", email), {
-    //   todos: {
-    //     title,
-    //     descr,
-    //     day,
-    //     color,
-    //     tag
-    //   }
-    // }, {merge: true});
-
     dispatch(getTodos(email));
   };
 
