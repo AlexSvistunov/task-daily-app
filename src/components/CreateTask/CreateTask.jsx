@@ -34,8 +34,6 @@ const CreateTask = ({ currentDate, showListHandler }) => {
     dispatch(getTodos(email));
   }, []);
 
-
-
   const todos = useSelector((state) => state.todos.todoList);
   console.log(todos);
 
