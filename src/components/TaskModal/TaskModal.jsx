@@ -1,11 +1,11 @@
-import { getDatabase, ref, child, push, update } from "firebase/database";
-import { db } from "../../firebase/firebase";
-import { doc, updateDoc } from "firebase/firestore";
-import { arrayUnion } from "firebase/firestore";
+// import { getDatabase, ref, child, push, update } from "firebase/database";
+// import { db } from "../../firebase/firebase";
+// import { doc, updateDoc } from "firebase/firestore";
+// import { arrayUnion } from "firebase/firestore";
 import { getTodos } from "../../store/slices/todoSlice";
-import { arrayRemove } from "firebase/firestore";
+// import { arrayRemove } from "firebase/firestore";
 
-import { FieldValue } from "firebase/firestore";
+// import { FieldValue } from "firebase/firestore";
 
 import { useEffect } from "react";
 
@@ -21,7 +21,7 @@ const TaskModal = ({
 }) => {
   const dispatch = useDispatch();
   async function updateTitle(email, value) {
-    const theDoc = doc(db, "users", email);
+    // const theDoc = doc(db, "users", email);
 
     // await updateDoc(theDoc, {
     //   todos: arrayRemove('0'),

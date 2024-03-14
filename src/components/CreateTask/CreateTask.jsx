@@ -1,16 +1,18 @@
 import { useState } from "react";
-import { addDoc, updateDoc } from "firebase/firestore";
-import { collection } from "firebase/firestore";
-import { db } from "../../firebase/firebase";
+// import { addDoc, updateDoc } from "firebase/firestore";
+// import { collection } from "firebase/firestore";
+// import { db } from "../../firebase/firebase";
+// import { doc } from "firebase/firestore";
+// import { setDoc } from "firebase/firestore";
+// import { arrayUnion } from "firebase/firestore";
+// import { getDoc } from "firebase/firestore";
 
-import { doc } from "firebase/firestore";
-import { setDoc } from "firebase/firestore";
 import { useAuth } from "../../hooks/use-auth";
-import { arrayUnion } from "firebase/firestore";
 import { useEffect } from "react";
 import { getTodos } from "../../store/slices/todoSlice";
 
-import { getDoc } from "firebase/firestore";
+import { getDatabase, ref, set } from "firebase/database";
+
 import { useDispatch, useSelector } from "react-redux";
 
 import "./CreateTask.css";
@@ -26,23 +28,30 @@ const CreateTask = ({ currentDate, showListHandler }) => {
   const [tag, setTag] = useState("");
   const [userData, setUserData] = useState([]);
   const [currentColor, setCurrentColor] = useState(["Фисташковый", "#EDEAEA"]);
-  const { email } = useAuth();
+  const { email, token } = useAuth();
 
   useEffect(() => {
     dispatch(getTodos(email));
   }, []);
 
+
+
   const todos = useSelector((state) => state.todos.todoList);
   console.log(todos);
 
   const addTask = async (title, descr, email, day, color, tag) => {
-    const theDoc = doc(db, "users", email);
-    await updateDoc(theDoc, {
-      todos: arrayUnion({ title, descr, day, color, tag}),
 
-    });
+    const db = getDatabase()
+    set(ref(db, 'users/' + token + '/' + todos.length + 1), {
+      title,
+      descr,
+      email,
+      day,
+      color,
+      tag
+    })
 
-    dispatch(getTodos(email));
+    dispatch(getTodos(token));
   };
 
   const setColor = (color) => {
