@@ -20,9 +20,8 @@ import "./CreateTask.css";
 // editing through redux thunk
 // when additing and query is going -> spinner
 
-const CreateTask = ({ currentDate, showListHandler }) => {
+const CreateTask = ({ currentDate, showListHandler, index, setIndex }) => {
   const dispatch = useDispatch();
-
   const [title, setTitle] = useState("");
   const [descr, setDescr] = useState("");
   const [tag, setTag] = useState("");
@@ -34,13 +33,13 @@ const CreateTask = ({ currentDate, showListHandler }) => {
     dispatch(getTodos(email));
   }, []);
 
+
   const todos = useSelector((state) => state.todos.todoList);
   console.log(todos);
 
-  const addTask = async (title, descr, email, day, color, tag) => {
-
+  const addTask = async (title, descr, email, day, color, tag, currentIndex, setCurrentIndex) => {
     const db = getDatabase()
-    set(ref(db, 'users/' + token + '/' + todos.length + 1), {
+    set(ref(db, 'users/' + token + '/' + currentIndex), {
       title,
       descr,
       email,
@@ -48,8 +47,9 @@ const CreateTask = ({ currentDate, showListHandler }) => {
       color,
       tag
     })
-
     dispatch(getTodos(token));
+    setCurrentIndex(currentIndex + 1)
+
   };
 
   const setColor = (color) => {
@@ -507,7 +507,9 @@ const CreateTask = ({ currentDate, showListHandler }) => {
             email,
             currentDate.toLocaleDateString(),
             currentColor[1],
-            tag
+            tag,
+            index,
+            setIndex
           );
           showListHandler();
         }}
