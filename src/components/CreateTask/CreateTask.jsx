@@ -45,9 +45,10 @@ const CreateTask = ({ currentDate, showListHandler, index, setIndex }) => {
       email,
       day,
       color,
-      tag
+      tag,
+      currentIndex
     })
-    
+
     dispatch(getTodos(token));
     setCurrentIndex(currentIndex + 1)
    }

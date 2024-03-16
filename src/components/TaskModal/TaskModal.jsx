@@ -29,7 +29,7 @@ const TaskModal = ({
    
     const updates = {}
     // updates['users/' + token + '/' + '0' + "title"] = dataModal.title
-    updates[`users/${token}/0/title`] = dataModal.title;
+    updates[`users/${token}/${dataModal.currentIndex}/title`] = dataModal.title;
 
     update(ref(db), updates).then(() => {
       dispatch(getTodos(token));
@@ -60,7 +60,7 @@ const TaskModal = ({
     // subcollection instead of an array
   }
 
-  console.log(dataModal.title);
+  console.log(dataModal);
   return (
     <div className="task-modal">
       <div className="task-modal__inner">
