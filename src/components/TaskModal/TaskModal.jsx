@@ -28,8 +28,9 @@ const TaskModal = ({
     const db = getDatabase();
    
     const updates = {}
-    // updates['users/' + token + '/' + '0' + "title"] = dataModal.title
+
     updates[`users/${token}/${dataModal.currentIndex}/title`] = dataModal.title;
+    updates[`users/${token}/${dataModal.currentIndex}/descr`] = dataModal.descr;
 
     update(ref(db), updates).then(() => {
       dispatch(getTodos(token));
