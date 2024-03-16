@@ -40,33 +40,23 @@ const TaskModal = ({
       })
       .catch((error) => console.log(error.message));
 
-    // AND DESCR AND FIX INDEX
-
-    // const theDoc = doc(db, "users", email);
-
-    // await updateDoc(theDoc, {
-    //   todos: arrayRemove('0'),
-    // });
-
-    // await updateDoc(theDoc, {
-    //   [`todos.0`]: arrayRemove(),
-    // });
-
-    // await updateDoc(theDoc, {
-    //   todos: arrayUnion({
-    //     0: {
-    //       title: value,
-    //     },
-    //   }),
-    // });
-
-    // subcollection instead of an array
   }
+
+  function hexToRgb(hex) {
+    hex = hex.replace('#', '');
+
+    // Разбиваем шестнадцатеричное значение на отдельные компоненты
+    let r = parseInt(hex.substring(0, 2), 16);
+    let g = parseInt(hex.substring(2, 4), 16);
+    let b = parseInt(hex.substring(4, 6), 16);
+    return `rgba(${r}, ${g}, ${b}, 0.8)`;
+}
+
 
   console.log(dataModal);
   return (
     <div className="task-modal">
-      <div className="task-modal__inner">
+      <div className="task-modal__inner" style={{backgroundColor: hexToRgb(dataModal.color), boxShadow: `-3px 4px 5px ${hexToRgb(dataModal.color)}`}}>
         <div className="task-modal__content">
           <input
             className="task-modal__input"
@@ -80,7 +70,6 @@ const TaskModal = ({
                   ["title"]: e.target.value,
                 })
 
-              //  но будет ли меняться на сервере, и не меняется на стейте!!!
             }
           ></input>
           <input
@@ -115,8 +104,8 @@ const TaskModal = ({
               xmlns="http://www.w3.org/2000/svg"
               x="0px"
               y="0px"
-              width="35"
-              height="35"
+              width="50"
+              height="50"
               viewBox="0 0 48 48"
             >
               <linearGradient
