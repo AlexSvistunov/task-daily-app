@@ -56,10 +56,27 @@
 }
 
 .task-modal__apply {
-  margin-top: auto;
+  width: 50%;
   background-color: transparent;
   border: 1px solid black;
   border-radius: 5px;
   padding: 15px;
   cursor: pointer;
+}
+
+.task-modal__delete {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  width: 35px;
+  height: 35px;
+
+}
+
+.task-modal__btn-box {
+  justify-content: center;
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
