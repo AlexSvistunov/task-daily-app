@@ -31,7 +31,7 @@ const MainAppPage = () => {
   };
   const todos = useSelector((state) => state.todos.todoList);
 
-  // возможно тут диспатчить запрос
+  // IF IS AUTH DO THIS ALL BELOW, IF NOT - REDIRECT
 
   return (
     <>

@@ -4,6 +4,10 @@
 // import { arrayUnion } from "firebase/firestore";
 import { getTodos } from "../../store/slices/todoSlice";
 // import { arrayRemove } from "firebase/firestore";
+import { getDatabase } from "firebase/database";
+import { ref } from "firebase/database";
+import { update } from "firebase/database";
+import { useAuth } from "../../hooks/use-auth";
 
 // import { FieldValue } from "firebase/firestore";
 
@@ -17,10 +21,24 @@ const TaskModal = ({
   setModalIsOpen,
   dataModal,
   setDataModal,
-  email,
 }) => {
+  const { email, token } = useAuth();
   const dispatch = useDispatch();
-  async function updateTitle(email, value) {
+  async function updateTitle() {
+    const db = getDatabase();
+   
+    const updates = {}
+    // updates['users/' + token + '/' + '0' + "title"] = dataModal.title
+    updates[`users/${token}/0/title`] = dataModal.title;
+
+    update(ref(db), updates).then(() => {
+      dispatch(getTodos(token));
+      console.log('success');
+      setModalIsOpen(false)
+    }).catch((error) => console.log(error.message))
+
+    // AND DESCR AND FIX INDEX
+    
     // const theDoc = doc(db, "users", email);
 
     // await updateDoc(theDoc, {
@@ -42,7 +60,7 @@ const TaskModal = ({
     // subcollection instead of an array
   }
 
-  console.log(dataModal);
+  console.log(dataModal.title);
   return (
     <div className="task-modal">
       <div className="task-modal__inner">
@@ -82,7 +100,8 @@ const TaskModal = ({
         >
           X
         </button>
-        <button onClick={() => updateTitle(email, dataModal.title)}>
+        <button className="task-modal__apply" onClick={() => updateTitle()}> 
+        {/* token, index, email, value */}
           Apply
         </button>
       </div>

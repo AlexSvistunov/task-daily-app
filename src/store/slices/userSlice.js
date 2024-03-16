@@ -2,9 +2,9 @@ import { createSlice } from "@reduxjs/toolkit";
 
 
 const initialState = {
-  token: localStorage.getItem('token').length ? localStorage.getItem('token') : null,
+  token: localStorage.getItem('token')?.length ? localStorage.getItem('token') : null,
   id: null,
-  email: localStorage.getItem('email').length ? localStorage.getItem('email') : null,
+  email: localStorage.getItem('email')?.length ? localStorage.getItem('email') : null,
 }
 
 const userSlice = createSlice({
@@ -21,6 +21,8 @@ const userSlice = createSlice({
       state.email = null
       state.id = null
       state.token = null
+      localStorage.removeItem('token')
+      localStorage.removeItem('email')
     },
 
     

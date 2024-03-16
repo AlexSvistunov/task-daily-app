@@ -37,6 +37,7 @@ const CreateTask = ({ currentDate, showListHandler, index, setIndex }) => {
   console.log(todos);
 
   const addTask = async (title, descr, email, day, color, tag, currentIndex, setCurrentIndex) => {
+   if(title.length) {
     const db = getDatabase()
     set(ref(db, 'users/' + token + '/' + currentIndex), {
       title,
@@ -46,8 +47,10 @@ const CreateTask = ({ currentDate, showListHandler, index, setIndex }) => {
       color,
       tag
     })
+    
     dispatch(getTodos(token));
     setCurrentIndex(currentIndex + 1)
+   }
 
   };
 

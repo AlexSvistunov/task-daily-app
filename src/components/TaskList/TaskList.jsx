@@ -43,7 +43,7 @@ const TaskList = ({showListHandler, currentDate}) => {
         <span className="material-symbols-outlined">add_task</span>
       </button>
 
-      {modalIsOpen && <TaskModal modalIsOpen={modalIsOpen} setModalIsOpen={setModalIsOpen} dataModal={dataModal} setDataModal={setDataModal} email={email}/>}
+      {modalIsOpen && <TaskModal modalIsOpen={modalIsOpen} setModalIsOpen={setModalIsOpen} dataModal={dataModal} setDataModal={setDataModal}/>}
     </section>
 
     

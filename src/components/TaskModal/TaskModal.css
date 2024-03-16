@@ -13,11 +13,14 @@
 
 
 .task-modal__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
   padding: 50px;
   position: relative;
-  max-width: 650px;
+  max-width: 850px;
   width: 100%;
-  min-height: 350px;
+  min-height: 550px;
   background-color: #fff;
   border-radius: 15px;
 }
@@ -32,4 +35,31 @@
   font-size: 25px;
   width: 25px;
   height: 25px;
+}
+
+.task-modal__content {
+  padding: 15px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.task-modal__input {
+  padding: 5px 10px;
+  height: 50px;
+  border-radius: 5px;
+  font-size: 22px;
+}
+
+.task-modal__input::placeholder {
+  font-size: 22px;
+}
+
+.task-modal__apply {
+  margin-top: auto;
+  background-color: transparent;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 15px;
+  cursor: pointer;
 }
