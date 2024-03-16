@@ -15,9 +15,8 @@ const LogIn = () => {
   const onClickAuth = (email, password) => {
     const auth = getAuth()
     signInWithEmailAndPassword(auth, email, password)
-      .then(() => {
-
-        dispatch(setUser({email}))
+      .then((userDetails) => {
+        dispatch(setUser({ email, token: userDetails.user.uid }));
         navigate(ROUTES.LANDINGPAGE)
       })
 

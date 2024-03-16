@@ -7,6 +7,7 @@ import { getDatabase, ref, get, child } from "firebase/database";
 
 export const getTodos = createAsyncThunk("todos/getTodos", async (token) => {
   const dbRef = ref(getDatabase());
+  console.log(token);
   try {
     const snapshot = await get(child(dbRef, `users/${token}`));
     if (snapshot.exists()) {

@@ -30,9 +30,8 @@ const CreateTask = ({ currentDate, showListHandler, index, setIndex }) => {
   const { email, token } = useAuth();
 
   useEffect(() => {
-    dispatch(getTodos(email));
+    dispatch(getTodos(token));
   }, []);
-
 
   const todos = useSelector((state) => state.todos.todoList);
   console.log(todos);

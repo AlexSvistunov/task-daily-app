@@ -12,21 +12,22 @@ const TaskList = ({showListHandler, currentDate}) => {
   const [modalIsOpen, setModalIsOpen] = useState(false)
   const [dataModal, setDataModal] = useState(null)
 
-  const { email } = useAuth();
+  const { email, token } = useAuth();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getTodos(email));
+    dispatch(getTodos(token));
   }, []);
 
   const todos = useSelector((state) => state.todos.todoList);
+  console.log(todos);
   const todosForDate = todos?.todos && Array.isArray(todos.todos) ? todos.todos.filter((el) => el['day'] === currentDate.toLocaleDateString()) : [];
 
   return (
     <section className="task-list">
       <ul className="tasks-list">
-        {todosForDate?.length ? 
-          todosForDate.map((el) => (
+        {todos?.length ? 
+          todos.map((el) => (
             <li key={el.title} className="tasks-list__task list-task" style={{backgroundColor: el.color}} onClick={() => {
               setModalIsOpen(true)
               setDataModal(el)
