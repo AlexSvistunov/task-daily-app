@@ -24,6 +24,8 @@ const SignUp = () => {
         navigate(ROUTES.LANDINGPAGE);
         // addUserToDataBase(email);
         navigate(ROUTES.TODOAPP)
+        localStorage.setItem('token', userDetails.user.uid )
+        localStorage.setItem('email', email )
       })
 
       .catch((error) => {
