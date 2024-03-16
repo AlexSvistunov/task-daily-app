@@ -55,13 +55,31 @@
 }
 
 .user__dropdown {
+  /* border: 1px solid rgb(148, 138, 138); */
+  padding: 10px;
+  background-color: rgb(253, 251, 251, 0.8);
+  border-radius: 4px;
   position: absolute;
   top: 100%;
-  left: -40px;
+  left: -60px;
   opacity: 0;
   z-index: 20;
   visibility: hidden;
   display: none;
+}
+
+.user__dropdown button {
+
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  color: rgba(40, 35, 35, 0.9);
+  font-size: 24px;
+  padding: 5px 0;
+}
+
+.user__dropdown button:hover {
+  color: rgba(30, 28, 28, 1);
 }
 
 .user__dropdown.user__dropdown--active {

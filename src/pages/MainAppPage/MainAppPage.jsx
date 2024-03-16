@@ -50,9 +50,9 @@ const MainAppPage = () => {
                 <div className="user">
                   <button className="page-app__header-user" onClick={() => setIsDropdownShown(!isDropdownShown)}></button>
                   <div className={isDropdownShown ? "user__dropdown user__dropdown--active" : 'user__dropdown'}>
-                    <button onClick={logOutHandler}>Log out</button>
-                    <button>Set | Change avatar</button>
+                    <button>Avatar</button>
                     <button>Settings</button>
+                    <button onClick={logOutHandler}>Log out</button>
                   </div>
                 </div>
               </div>

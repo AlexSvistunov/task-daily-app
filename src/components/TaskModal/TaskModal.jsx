@@ -100,93 +100,9 @@ const TaskModal = ({
           </button>
 
           <button className="task-modal__delete">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              x="0px"
-              y="0px"
-              width="50"
-              height="50"
-              viewBox="0 0 48 48"
-            >
-              <linearGradient
-                id="i9gMV8RPRiXBVRoCh9BlCa_BJkQWseLWhe4_gr1"
-                x1="24"
-                x2="24"
-                y1="16.026"
-                y2="18.015"
-                gradientUnits="userSpaceOnUse"
-              >
-                <stop offset="0" stop-color="#912fbd"></stop>
-                <stop offset="1" stop-color="#9332bf"></stop>
-              </linearGradient>
-              <path
-                fill="url(#i9gMV8RPRiXBVRoCh9BlCa_BJkQWseLWhe4_gr1)"
-                d="M41,18H7c-0.552,0-1-0.448-1-1v0c0-0.552,0.448-1,1-1h34c0.552,0,1,0.448,1,1v0	C42,17.552,41.552,18,41,18z"
-              ></path>
-              <linearGradient
-                id="i9gMV8RPRiXBVRoCh9BlCb_BJkQWseLWhe4_gr2"
-                x1="24"
-                x2="24"
-                y1="42.885"
-                y2="10.323"
-                gradientUnits="userSpaceOnUse"
-              >
-                <stop offset="0" stop-color="#912fbd"></stop>
-                <stop offset="1" stop-color="#9332bf"></stop>
-              </linearGradient>
-              <path
-                fill="url(#i9gMV8RPRiXBVRoCh9BlCb_BJkQWseLWhe4_gr2)"
-                d="M39,11v30c0,1.105-0.895,2-2,2H11c-1.105,0-2-0.895-2-2V11H39z"
-              ></path>
-              <linearGradient
-                id="i9gMV8RPRiXBVRoCh9BlCc_BJkQWseLWhe4_gr3"
-                x1="24"
-                x2="24"
-                y1="7.171"
-                y2="14.301"
-                gradientUnits="userSpaceOnUse"
-              >
-                <stop offset="0" stop-color="#c965eb"></stop>
-                <stop offset="1" stop-color="#c767e5"></stop>
-              </linearGradient>
-              <path
-                fill="url(#i9gMV8RPRiXBVRoCh9BlCc_BJkQWseLWhe4_gr3)"
-                d="M8,11v-1c0-1.657,1.343-3,3-3h26c1.657,0,3,1.343,3,3v1H8z"
-              ></path>
-              <linearGradient
-                id="i9gMV8RPRiXBVRoCh9BlCd_BJkQWseLWhe4_gr4"
-                x1="24"
-                x2="24"
-                y1="4.04"
-                y2="7.022"
-                gradientUnits="userSpaceOnUse"
-              >
-                <stop offset="0" stop-color="#ae4cd5"></stop>
-                <stop offset="1" stop-color="#ac4ad5"></stop>
-              </linearGradient>
-              <path
-                fill="url(#i9gMV8RPRiXBVRoCh9BlCd_BJkQWseLWhe4_gr4)"
-                d="M28,4h-8c-1.105,0-2,0.895-2,2v1h12V6C30,4.895,29.105,4,28,4z"
-              ></path>
-              <linearGradient
-                id="i9gMV8RPRiXBVRoCh9BlCe_BJkQWseLWhe4_gr5"
-                x1="15"
-                x2="33"
-                y1="27"
-                y2="27"
-                gradientUnits="userSpaceOnUse"
-              >
-                <stop offset="0" stop-color="#ae4cd5"></stop>
-                <stop offset="1" stop-color="#ac4ad5"></stop>
-              </linearGradient>
-              <rect
-                width="18"
-                height="32"
-                x="15"
-                y="11"
-                fill="url(#i9gMV8RPRiXBVRoCh9BlCe_BJkQWseLWhe4_gr5)"
-              ></rect>
-            </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50" viewBox="0 0 48 48">
+<path fill="#9fa8da" d="M44,12.9h-7.6c-0.5-3.4-3.4-6-6.9-6s-6.4,2.6-6.9,6H15c-0.8,0-1.5,0.7-1.5,1.5s0.7,1.5,1.5,1.5h0.6l2.5,25.9	c0.2,2.1,1.9,3.6,4,3.6h14.7c2.1,0,3.8-1.6,4-3.6l2.5-25.9H44c0.8,0,1.5-0.7,1.5-1.5S44.8,12.9,44,12.9z"></path><path fill="none" stroke="#18193f" stroke-miterlimit="10" stroke-width="3" d="M29.5,11.5V11c0-3-2.5-5.5-5.5-5.5S18.5,8,18.5,11v0.5"></path><line x1="7.5" x2="40.5" y1="11.5" y2="11.5" fill="none" stroke="#18193f" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3"></line><line x1="36.5" x2="38" y1="27" y2="11.5" fill="none" stroke="#18193f" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3"></line><path fill="none" stroke="#18193f" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3" d="M10.7,18.6l2,20.3c0.2,2.1,1.9,3.6,4,3.6h14.7c2.1,0,3.8-1.6,4-3.6l0.5-4.8"></path>
+</svg>
           </button>
         </div>
       </div>
