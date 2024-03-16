@@ -21,13 +21,14 @@ const TaskList = ({showListHandler, currentDate}) => {
 
   const todos = useSelector((state) => state.todos.todoList);
   console.log(todos);
-  const todosForDate = todos?.todos && Array.isArray(todos.todos) ? todos.todos.filter((el) => el['day'] === currentDate.toLocaleDateString()) : [];
+  const todosForDate = todos && todos.filter((el) => el['day'] === currentDate.toLocaleDateString())
+  console.log(todosForDate);
 
   return (
     <section className="task-list">
       <ul className="tasks-list">
-        {todos?.length ? 
-          todos.map((el) => (
+        {todosForDate.length ? 
+          todosForDate.map((el) => (
             <li key={el.title} className="tasks-list__task list-task" style={{backgroundColor: el.color}} onClick={() => {
               setModalIsOpen(true)
               setDataModal(el)
