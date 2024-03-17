@@ -7,7 +7,7 @@ import { useState } from "react";
 
 import "./TaskList.css";
 
-const TaskList = ({showListHandler, currentDate}) => {
+const TaskList = ({showListHandler, currentDate, index, setIndex}) => {
 
   const [modalIsOpen, setModalIsOpen] = useState(false)
   const [dataModal, setDataModal] = useState(null)
@@ -43,7 +43,8 @@ const TaskList = ({showListHandler, currentDate}) => {
         <span className="material-symbols-outlined">add_task</span>
       </button>
 
-      {modalIsOpen && <TaskModal modalIsOpen={modalIsOpen} setModalIsOpen={setModalIsOpen} dataModal={dataModal} setDataModal={setDataModal}/>}
+      {modalIsOpen && <TaskModal modalIsOpen={modalIsOpen} setModalIsOpen={setModalIsOpen} dataModal={dataModal} setDataModal={setDataModal} index={index}
+        setIndex={setIndex}/>}
     </section>
 
     

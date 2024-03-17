@@ -64,6 +64,8 @@ const MainAppPage = () => {
               <TaskList
                 showListHandler={showListHandler}
                 currentDate={currentDate}
+                index={index}
+                setIndex={setIndex}
               />
             ) : (
               <CreateTask
