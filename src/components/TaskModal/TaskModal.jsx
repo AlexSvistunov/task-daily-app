@@ -54,7 +54,7 @@ const TaskModal = ({
 
   const deleteTask = async () => {
     const db = getDatabase()
-    await remove(ref(db, 'users/' + token + '/' + dataModal.currentIndex))
+    remove(ref(db, 'users/' + token + '/' + dataModal.currentIndex))
     setModalIsOpen(false)
 
 

@@ -11,7 +11,35 @@ export const getTodos = createAsyncThunk("todos/getTodos", async (token) => {
   try {
     const snapshot = await get(child(dbRef, `users/${token}`));
     if (snapshot.exists()) {
-      return snapshot.val();
+      if (typeof snapshot.val() === 'object' && snapshot.val() !== null && !Array.isArray(snapshot.val())) {
+        return Object.values(snapshot.val())
+      }
+
+      if (Array.isArray(snapshot.val())) {
+      
+        return snapshot.val().filter((el) => {
+          if(el) {
+            return el
+          }
+        })
+       
+      }
+
+      else {
+        return []
+      }
+
+      // if(Object.prototype.toString.call(snapshot.val()) === 'object Object') {
+      //   return Object.values(snapshot.val())
+      // } else {
+      //   return snapshot.val()
+      // }
+      // if (snapshot.exists() && Array.isArray(snapshot.val()))
+      // return snapshot.val().filter((el) => {
+      //   if(el) {
+      //     return el
+      //   }
+      // });
     } else {
       console.log("No data available");
       return [];
@@ -21,7 +49,6 @@ export const getTodos = createAsyncThunk("todos/getTodos", async (token) => {
     return [];
   }
 });
-
 
 const initialState = {
   todoList: [],

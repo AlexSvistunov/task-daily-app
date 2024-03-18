@@ -5,7 +5,7 @@ import Calendar from "react-calendar";
 import "./Aside.css";
 
 const Aside = ({ currentDay, changeDay }) => {
-  const todos = useSelector((state) => state.todos.todoList);
+  const todos = useSelector((state) => state.todos.todoList)
   const todosForDate = todos && todos.filter((el) => el['day'] === currentDay.toLocaleDateString()).length
   console.log(todosForDate);
   return (
