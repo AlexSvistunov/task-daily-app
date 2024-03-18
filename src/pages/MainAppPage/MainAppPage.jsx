@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "react-calendar/dist/Calendar.css";
 import Aside from "../../components/Aside/Aside";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,14 +7,18 @@ import CreateTask from "../../components/CreateTask/CreateTask";
 import TaskList from "../../components/TaskList/TaskList";
 
 import "./MainAppPage.css";
+import { useAuth } from "../../hooks/use-auth";
+import { useNavigate } from "react-router-dom";
+import ROUTES from "../../utils/routes";
 
 const MainAppPage = () => {
   const dispatch = useDispatch();
   const email = useSelector((state) => state.user.email);
+  const { isAuth } = useAuth();
 
   const [showList, setShowList] = useState(true);
   const [currentDate, setCurrentDate] = useState(new Date());
-  const [isDropdownShown, setIsDropdownShown] = useState(false)
+  const [isDropdownShown, setIsDropdownShown] = useState(false);
 
   let [index, setIndex] = useState(0);
 
@@ -31,7 +35,14 @@ const MainAppPage = () => {
   };
   const todos = useSelector((state) => state.todos.todoList);
 
-  // IF IS AUTH DO THIS ALL BELOW, IF NOT - REDIRECT
+  const navigate = useNavigate();
+
+  // useEffect(() => {
+  //   if (!isAuth) {
+  //     navigate(ROUTES.LANDINGPAGE);
+  //   }
+  // }, [isAuth, navigate])
+
 
   return (
     <>
@@ -48,8 +59,17 @@ const MainAppPage = () => {
                 <button onClick={logOutHandler}>Log out</button> */}
                 <button className="page-app__header-theme"></button>
                 <div className="user">
-                  <button className="page-app__header-user" onClick={() => setIsDropdownShown(!isDropdownShown)}></button>
-                  <div className={isDropdownShown ? "user__dropdown user__dropdown--active" : 'user__dropdown'}>
+                  <button
+                    className="page-app__header-user"
+                    onClick={() => setIsDropdownShown(!isDropdownShown)}
+                  ></button>
+                  <div
+                    className={
+                      isDropdownShown
+                        ? "user__dropdown user__dropdown--active"
+                        : "user__dropdown"
+                    }
+                  >
                     <button>Avatar</button>
                     <button>Settings</button>
                     <button onClick={logOutHandler}>Log out</button>

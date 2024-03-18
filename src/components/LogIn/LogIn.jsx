@@ -18,6 +18,8 @@ const LogIn = () => {
       .then((userDetails) => {
         dispatch(setUser({ email, token: userDetails.user.uid }));
         navigate(ROUTES.LANDINGPAGE)
+        localStorage.setItem('token', userDetails.user.uid )
+        localStorage.setItem('email', email )
       })
 
       .catch((error) => {

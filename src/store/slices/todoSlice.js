@@ -11,35 +11,23 @@ export const getTodos = createAsyncThunk("todos/getTodos", async (token) => {
   try {
     const snapshot = await get(child(dbRef, `users/${token}`));
     if (snapshot.exists()) {
-      if (typeof snapshot.val() === 'object' && snapshot.val() !== null && !Array.isArray(snapshot.val())) {
-        return Object.values(snapshot.val())
+      if (
+        typeof snapshot.val() === "object" &&
+        snapshot.val() !== null &&
+        !Array.isArray(snapshot.val())
+      ) {
+        return Object.values(snapshot.val());
       }
 
       if (Array.isArray(snapshot.val())) {
-      
         return snapshot.val().filter((el) => {
-          if(el) {
-            return el
+          if (el) {
+            return el;
           }
-        })
-       
+        });
+      } else {
+        return [];
       }
-
-      else {
-        return []
-      }
-
-      // if(Object.prototype.toString.call(snapshot.val()) === 'object Object') {
-      //   return Object.values(snapshot.val())
-      // } else {
-      //   return snapshot.val()
-      // }
-      // if (snapshot.exists() && Array.isArray(snapshot.val()))
-      // return snapshot.val().filter((el) => {
-      //   if(el) {
-      //     return el
-      //   }
-      // });
     } else {
       console.log("No data available");
       return [];
@@ -61,7 +49,6 @@ const todoSlice = createSlice({
 
   extraReducers: (builder) => {
     builder.addCase(getTodos.fulfilled, (state, action) => {
-      console.log(action);
       state.todoList = action.payload;
     });
   },

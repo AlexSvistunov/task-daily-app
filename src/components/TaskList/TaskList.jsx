@@ -23,45 +23,9 @@ const TaskList = ({showListHandler, currentDate, index, setIndex}) => {
     dispatch(getTodos(token));
   }, []);
 
-  const check = async () => {
-    const dbRef = ref(getDatabase());
-    try {
-      const snapshot = await get(child(dbRef, `users/${token}`));
-      if (snapshot.exists()) {
-
-        if (typeof snapshot.val() === 'object' && snapshot.val() !== null && !Array.isArray(snapshot.val())) {
-          console.log('ОБЪЕКТ!!!');
-          console.log(Object.values(snapshot.val()));
-        }
-  
-        if (Array.isArray(snapshot.val())) {
-          console.log('МАССИВ!!!');
-          console.log(snapshot.val());
-         
-        }
-        
-        console.log(snapshot.val());
-        return snapshot.val()
-      // if (snapshot.exists()) {
-        
-      // console.log(snapshot.val());
-      //  return snapshot.val()
-
-      // } else {
-      //   console.log("No data available");
-      //   return [];
-      // }
-      }
-    } catch (error) {
-      console.error(error);
-      return [];
-    }
-  }
 
   const todos = useSelector((state) => state.todos.todoList)
-  console.log(todos);
   const todosForDate = todos && todos.filter((el) => el['day'] === currentDate.toLocaleDateString())
-  console.log(todosForDate);
 
   return (
     <section className="task-list">
@@ -81,8 +45,6 @@ const TaskList = ({showListHandler, currentDate, index, setIndex}) => {
       <button className="task-list__btn" onClick={showListHandler}>
         <span className="material-symbols-outlined">add_task</span>
       </button>
-
-      <button onClick={check}>sdfsdf</button>
 
       {modalIsOpen && <TaskModal modalIsOpen={modalIsOpen} setModalIsOpen={setModalIsOpen} dataModal={dataModal} setDataModal={setDataModal} index={index}
         setIndex={setIndex}/>}
