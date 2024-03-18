@@ -37,11 +37,11 @@ const MainAppPage = () => {
 
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   if (!isAuth) {
-  //     navigate(ROUTES.LANDINGPAGE);
-  //   }
-  // }, [isAuth, navigate])
+  useEffect(() => {
+    if (!isAuth) {
+      navigate(ROUTES.LANDINGPAGE);
+    }
+  }, [isAuth, navigate])
 
 
   return (
