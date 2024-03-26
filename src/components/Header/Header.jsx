@@ -12,18 +12,15 @@ const Header = () => {
   const logOutHandler = () => {
     dispatch(removeUser())
   }
-
-  // если пользователь авторизован, то функционал выйти с аккаунта,
-  // если не авторизован, то кнопки Register and Login
   return (
     <header className="header">
       <div className="container header__container">
         <Link className="logo header__logo" to={ROUTES.LANDINGPAGE}></Link>
 
         {isAuth ? (
-          <div style={{display: 'flex', gap: '20px'}}>
-            <div>{email}</div>
-            <button onClick={logOutHandler}>Log out</button>
+          <div style={{display: 'flex', gap: '20px', alignItems: 'center'}}>
+            <div style={{color: '#CA87F4', fontSize: '20px'}}>{email}</div>
+            <button onClick={logOutHandler} style={{background: 'transparent', border: '1px solid #CA87F4', cursor: 'pointer', fontSize: '20px', padding: '5px 10px', borderRadius: '5px', color: '#CA87F4'}}>Log out</button>
           </div>
         ) : (
           <div className="header__links">

@@ -32,17 +32,20 @@ const TaskList = ({ showListHandler, currentDate, index, setIndex }) => {
 
   if (isLoading) {
     return (
-      <section className="task-list"
+      <section
+        className="task-list"
         style={{
-          margin: '200px auto',
-          height: '200px',
-          width: '200px'
+          margin: "200px auto",
+          height: "200px",
+          width: "200px",
         }}
       >
         <HashLoader color="#CA87F4" size={150} />
       </section>
     );
   }
+
+  // не просто useState чтобы был isDone, так как все изменятся...
 
   return (
     <section className="task-list">
@@ -53,9 +56,11 @@ const TaskList = ({ showListHandler, currentDate, index, setIndex }) => {
               key={el.title}
               className="tasks-list__task list-task"
               style={{ backgroundColor: el.color }}
-              onClick={() => {
-                setModalIsOpen(true);
-                setDataModal(el);
+              onClick={(e) => {
+                if (e.target.tagName !== "INPUT") {
+                  setModalIsOpen(true);
+                  setDataModal(el);
+                }
               }}
             >
               <input className="list-task__checkbox" type="checkbox"></input>

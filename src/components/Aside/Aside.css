@@ -17,6 +17,7 @@
 .aside__inner {
   display: flex;
   flex-direction: column;
+  padding: 0 10px;
 }
 
 .tasks {
@@ -38,9 +39,10 @@
 }
 
 .task {
+  border-radius: 10px;
   min-height: 60px;
   padding: 9px 12px;
-  background-color: #F8F9FA;
+  background-color: rgb(157, 0, 255, 0.2);
   display: flex;
   align-items: center;
   justify-content: space-between;

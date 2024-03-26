@@ -49,7 +49,8 @@ const CreateTask = ({ currentDate, showListHandler}) => {
       day,
       color,
       tag,
-      currentIndex
+      currentIndex,
+      done: false,
     })
 
     dispatch(getTodos(token));

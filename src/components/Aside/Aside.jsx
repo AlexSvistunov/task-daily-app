@@ -3,6 +3,8 @@ import { useSelector } from "react-redux";
 import Calendar from "react-calendar";
 
 import "./Aside.css";
+import { Link } from "react-router-dom";
+import ROUTES from "../../utils/routes";
 
 const Aside = ({ currentDay, changeDay }) => {
   const todos = useSelector((state) => state.todos.todoList)
@@ -10,7 +12,7 @@ const Aside = ({ currentDay, changeDay }) => {
   return (
     <aside className="aside">
       <div className="aside__inner">
-        <a className="logo aside__logo"></a>
+        <Link className="logo aside__logo" to={ROUTES.LANDINGPAGE}></Link>
         <Calendar
           className="aside__calendar"
           value={currentDay}
