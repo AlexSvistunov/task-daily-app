@@ -15,12 +15,13 @@ import { getDatabase, ref, set } from "firebase/database";
 
 import { useDispatch, useSelector } from "react-redux";
 
+import { v4 as uuidv4 } from 'uuid';
+
 import "./CreateTask.css";
 
-// editing through redux thunk
 // when additing and query is going -> spinner
 
-const CreateTask = ({ currentDate, showListHandler, index, setIndex }) => {
+const CreateTask = ({ currentDate, showListHandler}) => {
   const dispatch = useDispatch();
   const [title, setTitle] = useState("");
   const [descr, setDescr] = useState("");
@@ -36,8 +37,10 @@ const CreateTask = ({ currentDate, showListHandler, index, setIndex }) => {
   const todos = useSelector((state) => state.todos.todoList);
   console.log(todos);
 
-  const addTask = async (title, descr, email, day, color, tag, currentIndex, setCurrentIndex) => {
+  const addTask = async (title, descr, email, day, color, tag) => {
+    
    if(title.length) {
+    const currentIndex = uuidv4()
     const db = getDatabase()
     set(ref(db, 'users/' + token + '/' + currentIndex), {
       title,
@@ -50,7 +53,6 @@ const CreateTask = ({ currentDate, showListHandler, index, setIndex }) => {
     })
 
     dispatch(getTodos(token));
-    setCurrentIndex(currentIndex + 1)
    }
 
   };
@@ -511,8 +513,6 @@ const CreateTask = ({ currentDate, showListHandler, index, setIndex }) => {
             currentDate.toLocaleDateString(),
             currentColor[1],
             tag,
-            index,
-            setIndex
           );
           showListHandler();
         }}

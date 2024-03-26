@@ -40,6 +40,7 @@ export const getTodos = createAsyncThunk("todos/getTodos", async (token) => {
 
 const initialState = {
   todoList: [],
+  isLoading: false
 };
 
 const todoSlice = createSlice({
@@ -50,6 +51,11 @@ const todoSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(getTodos.fulfilled, (state, action) => {
       state.todoList = action.payload;
+      state.isLoading = false
+    });
+
+    builder.addCase(getTodos.pending, (state, action) => {
+      state.isLoading = true
     });
   },
 });

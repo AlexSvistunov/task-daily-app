@@ -20,7 +20,6 @@ const MainAppPage = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [isDropdownShown, setIsDropdownShown] = useState(false);
 
-  let [index, setIndex] = useState(0);
 
   const changeDate = (value) => {
     setCurrentDate(value);
@@ -55,8 +54,6 @@ const MainAppPage = () => {
               <div
                 style={{ display: "flex", alignItems: "center", gap: "20px" }}
               >
-                {/* <span>{email}</span>
-                <button onClick={logOutHandler}>Log out</button> */}
                 <button className="page-app__header-theme"></button>
                 <div className="user">
                   <button
@@ -84,15 +81,13 @@ const MainAppPage = () => {
               <TaskList
                 showListHandler={showListHandler}
                 currentDate={currentDate}
-                index={index}
-                setIndex={setIndex}
+               
               />
             ) : (
               <CreateTask
                 currentDate={currentDate}
                 showListHandler={showListHandler}
-                index={index}
-                setIndex={setIndex}
+               
               />
             )}
           </main>

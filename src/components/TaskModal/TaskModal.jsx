@@ -21,9 +21,8 @@ const TaskModal = ({
   setModalIsOpen,
   dataModal,
   setDataModal,
-  index,
-  setIndex
 }) => {
+  console.log(dataModal);
   const { email, token } = useAuth();
   const dispatch = useDispatch();
   async function updateTitle() {
