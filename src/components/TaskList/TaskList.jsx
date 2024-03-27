@@ -28,7 +28,7 @@ const TaskList = ({ showListHandler, currentDate, index, setIndex }) => {
   console.log(isLoading);
   const todosForDate =
     todos &&
-    todos.filter((el) => el["day"] === currentDate.toLocaleDateString());
+    todos.filter((el) => el["day"] === currentDate.toLocaleDateString()).sort((a, b) => new Date(a.date) - new Date(b.date));
 
   if (isLoading) {
     return (

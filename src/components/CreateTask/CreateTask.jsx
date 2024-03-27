@@ -51,6 +51,7 @@ const CreateTask = ({ currentDate, showListHandler}) => {
       tag,
       currentIndex,
       done: false,
+      date: new Date().toISOString(),
     })
 
     dispatch(getTodos(token));
