@@ -18,6 +18,8 @@ const TaskList = ({ showListHandler, currentDate, index, setIndex }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [dataModal, setDataModal] = useState(null);
 
+  console.log(dataModal)
+
   const { email, token } = useAuth();
   const dispatch = useDispatch();
 
