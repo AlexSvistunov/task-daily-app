@@ -62,7 +62,6 @@ const TaskModal = ({
   }
 
 
-
   console.log(dataModal);
   return (
     <div className="task-modal">

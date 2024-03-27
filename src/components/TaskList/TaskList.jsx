@@ -10,6 +10,8 @@ import { getDatabase } from "firebase/database";
 import { child } from "firebase/database";
 import { HashLoader } from "react-spinners";
 
+import { update } from "firebase/database";
+
 import "./TaskList.css";
 
 const TaskList = ({ showListHandler, currentDate, index, setIndex }) => {
@@ -45,6 +47,21 @@ const TaskList = ({ showListHandler, currentDate, index, setIndex }) => {
     );
   }
 
+  async function updateIsDone() {
+    const db = getDatabase();
+
+    const updates = {};
+
+    updates[`users/${token}/${dataModal.currentIndex}/done`] = dataModal.done;
+
+    update(ref(db), updates)
+      .then(() => {
+        dispatch(getTodos(token));
+        console.log("success");
+      })
+      .catch((error) => console.log(error.message));
+  }
+
   // не просто useState чтобы был isDone, так как все изменятся...
 
   return (
@@ -63,7 +80,16 @@ const TaskList = ({ showListHandler, currentDate, index, setIndex }) => {
                 }
               }}
             >
-              <input className="list-task__checkbox" type="checkbox"></input>
+              <input className="list-task__checkbox" type="checkbox" onChange={(e) => {
+                setDataModal(el)
+                setDataModal({
+                  ...dataModal,
+                  ["done"]: true,
+                })
+
+                updateIsDone()
+
+              }}></input>
               <span className="list-task__title">{el.title}</span>
             </li>
           ))

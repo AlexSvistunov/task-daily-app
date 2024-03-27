@@ -481,6 +481,7 @@ const CreateTask = ({ currentDate, showListHandler}) => {
             placeholder="Set a tag for your task"
             value={tag}
             onChange={(e) => setTag(e.target.value)}
+            disabled
           ></input>
           <div className="task-tag__filters">
             <button
