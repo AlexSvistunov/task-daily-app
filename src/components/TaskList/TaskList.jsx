@@ -34,6 +34,9 @@ const TaskList = ({ showListHandler, currentDate, index, setIndex }) => {
     todos &&
     todos.filter((el) => el["day"] === currentDate.toLocaleDateString()).sort((a, b) => new Date(a.date) - new Date(b.date));
 
+  // const [elementsInfo, setElementsInfo] = useState(todosForDate)
+  // console.log(elementsInfo);
+
   if (isLoading) {
     return (
       <section

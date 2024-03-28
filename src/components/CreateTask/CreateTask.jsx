@@ -66,6 +66,9 @@ const CreateTask = ({ currentDate, showListHandler}) => {
   return (
     <section className="new-task">
       <h1 className="new-task__title">New Task</h1>
+      <button className="new-task__btn-back" onClick={showListHandler}>
+      <img width="50" height="50" src="https://img.icons8.com/ios/50/circled-left-2.png" alt="circled-left-2"/>
+      </button>
 
       <div className="new-task__fields">
         <div className="new-task__field">

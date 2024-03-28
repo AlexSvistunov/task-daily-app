@@ -19,8 +19,7 @@ const MainAppPage = () => {
   const [showList, setShowList] = useState(true);
   const [currentDate, setCurrentDate] = useState(new Date());
   const [isDropdownShown, setIsDropdownShown] = useState(false);
-
-
+  
   const changeDate = (value) => {
     setCurrentDate(value);
   };
