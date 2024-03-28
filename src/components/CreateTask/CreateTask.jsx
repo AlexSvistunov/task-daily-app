@@ -27,7 +27,7 @@ const CreateTask = ({ currentDate, showListHandler }) => {
   const [descr, setDescr] = useState("");
   const [tag, setTag] = useState("");
   const [userData, setUserData] = useState([]);
-  const [currentColor, setCurrentColor] = useState(["Фисташковый", "#EDEAEA"]);
+  const [currentColor, setCurrentColor] = useState(["Фисташковый", "#ADF7B6"]);
   const { email, token } = useAuth();
 
   useEffect(() => {
