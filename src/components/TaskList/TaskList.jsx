@@ -17,8 +17,8 @@ import "./TaskList.css";
 const TaskList = ({ showListHandler, currentDate, index, setIndex }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [dataModal, setDataModal] = useState(null);
+  console.log(dataModal);
 
-  console.log(dataModal)
 
   const { email, token } = useAuth();
   const dispatch = useDispatch();
@@ -64,7 +64,7 @@ const TaskList = ({ showListHandler, currentDate, index, setIndex }) => {
       .catch((error) => console.log(error.message));
   }
 
-  // не просто useState чтобы был isDone, так как все изменятся...
+
 
   return (
     <section className="task-list">
@@ -83,13 +83,13 @@ const TaskList = ({ showListHandler, currentDate, index, setIndex }) => {
               }}
             >
               <input className="list-task__checkbox" type="checkbox" onChange={(e) => {
-                setDataModal(el)
-                setDataModal({
-                  ...dataModal,
-                  ["done"]: true,
-                })
+                // setDataModal({
+                //   ...el,
+                //   ['done']: true,
+                // })
+               
 
-                updateIsDone()
+                // updateIsDone()
 
               }}></input>
               <span className="list-task__title">{el.title}</span>
@@ -122,3 +122,5 @@ const TaskList = ({ showListHandler, currentDate, index, setIndex }) => {
 };
 
 export default TaskList;
+
+// только со второго раза изменяет на done, так как useState =)
