@@ -21,7 +21,7 @@
   position: absolute;
   top: 41px;
   right: 24px;
-  transform: translate(-50%);
+  transform: translateY(-50%);
 }
 
 .new-task__fields {
@@ -35,7 +35,7 @@
   border-radius: 8px;
   max-width: 1071px;
   width: 100%;
-  padding: 16px;
+  padding: 16px 0;
   min-height: 56px;
   /* background: #f8f9fa; */
 }

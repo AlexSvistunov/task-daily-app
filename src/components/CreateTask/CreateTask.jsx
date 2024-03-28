@@ -15,13 +15,13 @@ import { getDatabase, ref, set } from "firebase/database";
 
 import { useDispatch, useSelector } from "react-redux";
 
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 
 import "./CreateTask.css";
 
 // when additing and query is going -> spinner
 
-const CreateTask = ({ currentDate, showListHandler}) => {
+const CreateTask = ({ currentDate, showListHandler }) => {
   const dispatch = useDispatch();
   const [title, setTitle] = useState("");
   const [descr, setDescr] = useState("");
@@ -37,26 +37,36 @@ const CreateTask = ({ currentDate, showListHandler}) => {
   const todos = useSelector((state) => state.todos.todoList);
   console.log(todos);
 
+  const validateTask = () => {
+    if (!title) {
+      alert('Fill the title input')
+      return false;
+    }
+
+    return true;
+  };
+
   const addTask = async (title, descr, email, day, color, tag) => {
-    
-   if(title.length) {
-    const currentIndex = uuidv4()
-    const db = getDatabase()
-    set(ref(db, 'users/' + token + '/' + currentIndex), {
-      title,
-      descr,
-      email,
-      day,
-      color,
-      tag,
-      currentIndex,
-      done: false,
-      date: new Date().toISOString(),
-    })
+    if (validateTask() === true) {
+      const currentIndex = uuidv4();
+      const db = getDatabase();
+      set(ref(db, "users/" + token + "/" + currentIndex), {
+        title,
+        descr,
+        email,
+        day,
+        color,
+        tag,
+        currentIndex,
+        done: false,
+        date: new Date().toISOString(),
+      });
 
-    dispatch(getTodos(token));
-   }
+      dispatch(getTodos(token));
+      showListHandler()
+    }
 
+    return
   };
 
   const setColor = (color) => {
@@ -67,7 +77,12 @@ const CreateTask = ({ currentDate, showListHandler}) => {
     <section className="new-task">
       <h1 className="new-task__title">New Task</h1>
       <button className="new-task__btn-back" onClick={showListHandler}>
-      <img width="50" height="50" src="https://img.icons8.com/ios/50/circled-left-2.png" alt="circled-left-2"/>
+        <img
+          width="50"
+          height="50"
+          src="https://img.icons8.com/ios/50/circled-left-2.png"
+          alt="circled-left-2"
+        />
       </button>
 
       <div className="new-task__fields">
@@ -518,9 +533,9 @@ const CreateTask = ({ currentDate, showListHandler}) => {
             email,
             currentDate.toLocaleDateString(),
             currentColor[1],
-            tag,
+            tag
           );
-          showListHandler();
+    
         }}
       >
         <span className="material-symbols-outlined">check</span>
