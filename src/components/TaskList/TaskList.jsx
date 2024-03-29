@@ -13,11 +13,11 @@ import { HashLoader } from "react-spinners";
 import { update } from "firebase/database";
 
 import "./TaskList.css";
+import TaskItem from "../TaskItem/TaskItem";
 
 const TaskList = ({ showListHandler, currentDate, index, setIndex, arrayListInfo, setArrayListInfo }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [dataModal, setDataModal] = useState(null);
-  console.log(dataModal);
   // const [list, setList] = useState([])
   // console.log(list);
 
@@ -80,33 +80,7 @@ const TaskList = ({ showListHandler, currentDate, index, setIndex, arrayListInfo
       <ul className="tasks-list">
         {todosForDate.length ? (
           todosForDate.map((el) => (
-            <li
-              key={el.title}
-              className="tasks-list__task list-task"
-              style={{ backgroundColor: el.color }}
-              onClick={(e) => {
-                if (e.target.tagName !== "INPUT") {
-                  setModalIsOpen(true);
-                  setDataModal(el);
-                }
-              }}
-            >
-              <input className="list-task__checkbox" type="checkbox" onChange={(e) => {
-                const currentIndex = el.currentIndex
-                const element = el
-                setDataModal(element)
-                setTimeout(() => {
-                  setDataModal({
-                    ...element,
-                    ['done']: !!element['done'],
-                  })
-                }, 100)
-
-                // updateIsDone()
-
-              }}></input>
-              <span className="list-task__title">{el.title}</span>
-            </li>
+            <TaskItem key={el.title} color={el.color} setModalIsOpen={setModalIsOpen} setDataModal={setDataModal} el={el}/>
           ))
         ) : (
           <img
@@ -137,3 +111,5 @@ const TaskList = ({ showListHandler, currentDate, index, setIndex, arrayListInfo
 export default TaskList;
 
 // только со второго раза изменяет на done, так как useState =)
+
+// сделать отдельный элемент =) todoItem
