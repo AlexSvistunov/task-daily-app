@@ -35,14 +35,6 @@ const TaskList = ({ showListHandler, currentDate, index, setIndex, arrayListInfo
     todos &&
     todos.filter((el) => el["day"] === currentDate.toLocaleDateString()).sort((a, b) => new Date(a.date) - new Date(b.date));
 
-    // useEffect(() => {
-    //   if (todosForDate && JSON.stringify(todosForDate) !== JSON.stringify(list)) {
-    //     setList(todosForDate);
-    //   }
-    // }, [todosForDate, list]);
-
-
-
   if (isLoading) {
     return (
       <section
@@ -58,12 +50,12 @@ const TaskList = ({ showListHandler, currentDate, index, setIndex, arrayListInfo
     );
   }
 
-  async function updateIsDone() {
+  async function updateIsDone(index, isDone) {
     const db = getDatabase();
 
     const updates = {};
 
-    updates[`users/${token}/${dataModal.currentIndex}/done`] = dataModal.done;
+    updates[`users/${token}/${index}/done`] = isDone
 
     update(ref(db), updates)
       .then(() => {
@@ -73,14 +65,13 @@ const TaskList = ({ showListHandler, currentDate, index, setIndex, arrayListInfo
       .catch((error) => console.log(error.message));
   }
 
-
-
   return (
     <section className="task-list">
       <ul className="tasks-list">
         {todosForDate.length ? (
           todosForDate.map((el) => (
-            <TaskItem key={el.title} color={el.color} setModalIsOpen={setModalIsOpen} setDataModal={setDataModal} el={el}/>
+
+            <TaskItem key={el.title} color={el.color} setModalIsOpen={setModalIsOpen} setDataModal={setDataModal} dataModal={dataModal} el={el} updateIsDone={updateIsDone} index={el.currentIndex}/>
           ))
         ) : (
           <img

@@ -1,8 +1,13 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-const TaskItem = ({color, setModalIsOpen, setDataModal, el}) => {
+import { getTodos } from "../../store/slices/todoSlice";
+import { useAuth } from "../../hooks/use-auth";
 
-  const [isCheckedInput, setIsCheckedInput] = useState(false)
+const TaskItem = ({color, setModalIsOpen, setDataModal, dataModal, el, updateIsDone, index}) => {
+  const { email, token } = useAuth();
+  const [isCheckedInput, setIsCheckedInput] = useState(useSelector((state) => state.todos.todoList).find((el) => el.currentIndex === index)['done'])
+
   console.log(isCheckedInput);
 
 
@@ -23,6 +28,14 @@ const TaskItem = ({color, setModalIsOpen, setDataModal, el}) => {
         checked={isCheckedInput}
         onChange={(e) => {
           setIsCheckedInput(!isCheckedInput)
+          setDataModal({
+            ...dataModal,
+            ['done']: isCheckedInput,
+          }
+         
+          )
+
+          updateIsDone(index, isCheckedInput)
  
         }}
       ></input>
