@@ -14,10 +14,12 @@ import { update } from "firebase/database";
 
 import "./TaskList.css";
 
-const TaskList = ({ showListHandler, currentDate, index, setIndex }) => {
+const TaskList = ({ showListHandler, currentDate, index, setIndex, arrayListInfo, setArrayListInfo }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [dataModal, setDataModal] = useState(null);
   console.log(dataModal);
+  // const [list, setList] = useState([])
+  // console.log(list);
 
 
   const { email, token } = useAuth();
@@ -29,13 +31,17 @@ const TaskList = ({ showListHandler, currentDate, index, setIndex }) => {
 
   const todos = useSelector((state) => state.todos.todoList);
   const isLoading = useSelector((state) => state.todos.isLoading);
-  console.log(isLoading);
   const todosForDate =
     todos &&
     todos.filter((el) => el["day"] === currentDate.toLocaleDateString()).sort((a, b) => new Date(a.date) - new Date(b.date));
 
-  // const [elementsInfo, setElementsInfo] = useState(todosForDate)
-  // console.log(elementsInfo);
+    // useEffect(() => {
+    //   if (todosForDate && JSON.stringify(todosForDate) !== JSON.stringify(list)) {
+    //     setList(todosForDate);
+    //   }
+    // }, [todosForDate, list]);
+
+
 
   if (isLoading) {
     return (
@@ -86,11 +92,15 @@ const TaskList = ({ showListHandler, currentDate, index, setIndex }) => {
               }}
             >
               <input className="list-task__checkbox" type="checkbox" onChange={(e) => {
-                // setDataModal({
-                //   ...el,
-                //   ['done']: true,
-                // })
-               
+                const currentIndex = el.currentIndex
+                const element = el
+                setDataModal(element)
+                setTimeout(() => {
+                  setDataModal({
+                    ...element,
+                    ['done']: !!element['done'],
+                  })
+                }, 100)
 
                 // updateIsDone()
 

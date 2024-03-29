@@ -36,7 +36,6 @@ const TaskModal = ({
     update(ref(db), updates)
       .then(() => {
         dispatch(getTodos(token));
-        console.log("success");
         setModalIsOpen(false);
       })
       .catch((error) => console.log(error.message));

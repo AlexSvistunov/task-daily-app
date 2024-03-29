@@ -21,7 +21,7 @@ import "./CreateTask.css";
 
 // when additing and query is going -> spinner
 
-const CreateTask = ({ currentDate, showListHandler }) => {
+const CreateTask = ({ currentDate, showListHandler, arrayListInfo, setArrayListInfo }) => {
   const dispatch = useDispatch();
   const [title, setTitle] = useState("");
   const [descr, setDescr] = useState("");

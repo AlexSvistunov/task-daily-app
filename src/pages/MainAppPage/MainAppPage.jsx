@@ -19,6 +19,7 @@ const MainAppPage = () => {
   const [showList, setShowList] = useState(true);
   const [currentDate, setCurrentDate] = useState(new Date());
   const [isDropdownShown, setIsDropdownShown] = useState(false);
+  const [arrayListInfo, setArrayListInfo] = useState([])
   
   const changeDate = (value) => {
     setCurrentDate(value);
@@ -80,12 +81,16 @@ const MainAppPage = () => {
               <TaskList
                 showListHandler={showListHandler}
                 currentDate={currentDate}
+                arrayListInfo={arrayListInfo}
+                setArrayListInfo={setArrayListInfo}
                
               />
             ) : (
               <CreateTask
                 currentDate={currentDate}
                 showListHandler={showListHandler}
+                arrayListInfo={arrayListInfo}
+                setArrayListInfo={setArrayListInfo}
                
               />
             )}
