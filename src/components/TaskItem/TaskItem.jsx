@@ -11,6 +11,12 @@ const TaskItem = ({color, setModalIsOpen, setDataModal, dataModal, el, updateIsD
   console.log(isCheckedInput);
 
 
+  // const isCheckedHandler = () => {
+  //   setIsCheckedInput(!isCheckedInput)
+  //   updateIsDone(index, isCheckedInput)
+  // }
+
+
   return (
     <li
       className="tasks-list__task list-task"
@@ -35,7 +41,10 @@ const TaskItem = ({color, setModalIsOpen, setDataModal, dataModal, el, updateIsD
          
           )
 
+          // setIsCheckedInput(!isCheckedInput)
           updateIsDone(index, isCheckedInput)
+
+      
  
         }}
       ></input>
