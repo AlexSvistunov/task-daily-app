@@ -55,7 +55,7 @@ const TaskList = ({ showListHandler, currentDate, index, setIndex, arrayListInfo
 
     const updates = {};
 
-    updates[`users/${token}/${index}/done`] = isDone
+    updates[`users/${token}/${index}/done`] = !isDone
 
     update(ref(db), updates)
       .then(() => {

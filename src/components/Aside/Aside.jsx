@@ -28,6 +28,15 @@ const Aside = ({ currentDay, changeDay }) => {
               {/* {todosForDate && todosForDate.length} */}
             </span>
           </li>
+          {todosForDate > 0 && (
+            <li className="task">
+            <span className="task__name">Done</span>
+            <span className="task__amount">
+            {todos && todos.filter((el) => el['day'] === currentDay.toLocaleDateString() && el['done']).length}
+            </span>
+          </li>
+          )} 
+         
         </ul>
 
         {/* <ul className="lists">
