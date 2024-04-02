@@ -81,3 +81,19 @@
   align-items: center;
   gap: 20px;
 }
+
+@media(max-width: 768px) {
+  .task-modal__inner {
+    padding: 35px;
+    max-width: 100%;
+    width: 90%;
+    min-height: 400px;
+    background-color: #fff;
+    border-radius: 15px
+  }
+
+  .task-modal__close {
+    top: 10px;
+    right: 10px;
+  }
+}
