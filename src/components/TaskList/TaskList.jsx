@@ -15,12 +15,18 @@ import { update } from "firebase/database";
 import "./TaskList.css";
 import TaskItem from "../TaskItem/TaskItem";
 
-const TaskList = ({ showListHandler, currentDate, index, setIndex, arrayListInfo, setArrayListInfo }) => {
+const TaskList = ({
+  showListHandler,
+  currentDate,
+  index,
+  setIndex,
+  arrayListInfo,
+  setArrayListInfo,
+}) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [dataModal, setDataModal] = useState(null);
   // const [list, setList] = useState([])
   // console.log(list);
-
 
   const { email, token } = useAuth();
   const dispatch = useDispatch();
@@ -33,7 +39,9 @@ const TaskList = ({ showListHandler, currentDate, index, setIndex, arrayListInfo
   const isLoading = useSelector((state) => state.todos.isLoading);
   const todosForDate =
     todos &&
-    todos.filter((el) => el["day"] === currentDate.toLocaleDateString()).sort((a, b) => new Date(a.date) - new Date(b.date));
+    todos
+      .filter((el) => el["day"] === currentDate.toLocaleDateString())
+      .sort((a, b) => new Date(a.date) - new Date(b.date));
 
   if (isLoading) {
     return (
@@ -55,7 +63,7 @@ const TaskList = ({ showListHandler, currentDate, index, setIndex, arrayListInfo
 
     const updates = {};
 
-    updates[`users/${token}/${index}/done`] = !isDone
+    updates[`users/${token}/${index}/done`] = !isDone;
 
     update(ref(db), updates)
       .then(() => {
@@ -69,10 +77,20 @@ const TaskList = ({ showListHandler, currentDate, index, setIndex, arrayListInfo
     <section className="task-list">
       <ul className="tasks-list">
         {todosForDate.length ? (
-          todosForDate.map((el) => (
-
-            <TaskItem key={el.title} color={el.color} setModalIsOpen={setModalIsOpen} setDataModal={setDataModal} dataModal={dataModal} el={el} updateIsDone={updateIsDone} index={el.currentIndex}/>
-          ))
+          todosForDate
+            .filter((element) => !element.done)
+            .map((el) => (
+              <TaskItem
+                key={el.title}
+                color={el.color}
+                setModalIsOpen={setModalIsOpen}
+                setDataModal={setDataModal}
+                dataModal={dataModal}
+                el={el}
+                updateIsDone={updateIsDone}
+                index={el.currentIndex}
+              />
+            ))
         ) : (
           <img
             src="src/assets/images/nothing-here.png"
@@ -81,6 +99,34 @@ const TaskList = ({ showListHandler, currentDate, index, setIndex, arrayListInfo
         )}
       </ul>
 
+      {todosForDate.length ? (
+        <div className="task-list__done">
+          <h3 className="task-list__done-title">Done</h3>
+          <ul className="tasks-list__done">
+            {todosForDate.length ? (
+              todosForDate
+                .filter((element) => element.done)
+                .map((el) => (
+                  <TaskItem
+                    key={el.title}
+                    color={el.color}
+                    setModalIsOpen={setModalIsOpen}
+                    setDataModal={setDataModal}
+                    dataModal={dataModal}
+                    el={el}
+                    updateIsDone={updateIsDone}
+                    index={el.currentIndex}
+                  />
+                ))
+            ) : (
+              <img
+                src="src/assets/images/nothing-here.png"
+                style={{ display: "block", margin: "200px auto" }}
+              ></img>
+            )}
+          </ul>
+        </div>
+      ) : null}
       <button className="task-list__btn" onClick={showListHandler}>
         <span className="material-symbols-outlined">add_task</span>
       </button>

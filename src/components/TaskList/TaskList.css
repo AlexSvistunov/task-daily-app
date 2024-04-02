@@ -1,5 +1,26 @@
 .task-list {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 70vh;
+}
+
+.task-list__done {
+  margin-top: auto;
+}
+
+.task-list__done-title {
+  font-size: 27px;
+  border-bottom: 1px solid #ccc;
+}
+
+.tasks-list__done {
+  margin: 0;
+  padding: 0;
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
 .task-list__btn {
@@ -17,6 +38,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@media (max-width: 768px) {
+  .task-list__btn  {
+    bottom: 8%;
+    right: 4%;
+  }
 }
 
 .material-symbols-outlined  {
@@ -38,6 +66,7 @@
   gap: 16px;
   border-radius: 8px;
   min-height: 75px;
+  cursor: pointer;
 }
 
 
@@ -51,8 +80,6 @@
   width: 30px;
   height: 30px;
 }
-
-
 
 
 
