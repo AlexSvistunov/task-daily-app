@@ -21,11 +21,11 @@ const MainAppPage = () => {
   const [showList, setShowList] = useState(true);
   const [currentDate, setCurrentDate] = useState(new Date());
   const [isDropdownShown, setIsDropdownShown] = useState(false);
-  const [arrayListInfo, setArrayListInfo] = useState([])
+  const [arrayListInfo, setArrayListInfo] = useState([]);
 
-  const [calendarIsOpen, setCalendarIsOpen] = useState(false)
-  const [todoIsOpen, setTodoIsOpen] = useState(true)
-  
+  const [calendarIsOpen, setCalendarIsOpen] = useState(false);
+  const [todoIsOpen, setTodoIsOpen] = useState(true);
+
   const changeDate = (value) => {
     setCurrentDate(value);
   };
@@ -39,16 +39,16 @@ const MainAppPage = () => {
   };
 
   const openCalendar = () => {
-   setCalendarIsOpen(true)
-  }
+    setCalendarIsOpen(true);
+  };
 
   const closeCalendar = () => {
-    setCalendarIsOpen(false)
-  }
+    setCalendarIsOpen(false);
+  };
 
   const todoOpen = () => {
-    setTodoIsOpen(true)
-  }
+    setTodoIsOpen(true);
+  };
   const todos = useSelector((state) => state.todos.todoList);
 
   const navigate = useNavigate();
@@ -57,67 +57,67 @@ const MainAppPage = () => {
     if (!isAuth) {
       navigate(ROUTES.LANDINGPAGE);
     }
-  }, [isAuth, navigate])
-
+  }, [isAuth, navigate]);
 
   return (
     <>
       {calendarIsOpen ? (
-        <Calendar value={currentDate}
-          onChange={changeDate}/>
-      ) :  <div className="page-app">
-        <Aside currentDay={currentDate} changeDay={changeDate} />
+        <div style={{height: '80vh', display: 'flex'}}>
+          <Calendar value={currentDate} onChange={changeDate} />
+        </div>
+      ) : (
+        <div className="page-app">
+          <Aside currentDay={currentDate} changeDay={changeDate} />
 
-        <div className="page-app__main">
-          <header className="page-app__header">
-            {email && (
-              <div
-                style={{ display: "flex", alignItems: "center", gap: "20px" }}
-              >
-                <button className="page-app__header-theme"></button>
-                <div className="user">
-                  <button
-                    className="page-app__header-user"
-                    onClick={() => setIsDropdownShown(!isDropdownShown)}
-                  ></button>
-                  <div
-                    className={
-                      isDropdownShown
-                        ? "user__dropdown user__dropdown--active"
-                        : "user__dropdown"
-                    }
-                  >
-                    <button>Avatar</button>
-                    <button>Settings</button>
-                    <button onClick={logOutHandler}>Log out</button>
+          <div className="page-app__main">
+            <header className="page-app__header">
+              {email && (
+                <div
+                  style={{ display: "flex", alignItems: "center", gap: "20px" }}
+                >
+                  <button className="page-app__header-theme"></button>
+                  <div className="user">
+                    <button
+                      className="page-app__header-user"
+                      onClick={() => setIsDropdownShown(!isDropdownShown)}
+                    ></button>
+                    <div
+                      className={
+                        isDropdownShown
+                          ? "user__dropdown user__dropdown--active"
+                          : "user__dropdown"
+                      }
+                    >
+                      <button>Avatar</button>
+                      <button>Settings</button>
+                      <button onClick={logOutHandler}>Log out</button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            )}
-          </header>
-          <main>
-            <h1 className="title">{currentDate.toDateString()}</h1>
-            {showList ? (
-              <TaskList
-                showListHandler={showListHandler}
-                currentDate={currentDate}
-                arrayListInfo={arrayListInfo}
-                setArrayListInfo={setArrayListInfo}
-               
-              />
-            ) : (
-              <CreateTask
-                currentDate={currentDate}
-                showListHandler={showListHandler}
-                arrayListInfo={arrayListInfo}
-                setArrayListInfo={setArrayListInfo}
-               
-              />
-            )}
-          </main>
+              )}
+            </header>
+            <main>
+              <h1 className="title">{currentDate.toDateString()}</h1>
+              {showList ? (
+                <TaskList
+                  showListHandler={showListHandler}
+                  currentDate={currentDate}
+                  arrayListInfo={arrayListInfo}
+                  setArrayListInfo={setArrayListInfo}
+                />
+              ) : (
+                <CreateTask
+                  currentDate={currentDate}
+                  showListHandler={showListHandler}
+                  arrayListInfo={arrayListInfo}
+                  setArrayListInfo={setArrayListInfo}
+                />
+              )}
+            </main>
+          </div>
         </div>
-      </div>}
-     
+      )}
+
       {/* {todoIsOpen ? <div className="page-app">
         <Aside currentDay={currentDate} changeDay={changeDate} />
 
@@ -170,7 +170,7 @@ const MainAppPage = () => {
           </main>
         </div>
       </div> : null} */}
-      <BottomSide openCalendar={openCalendar} closeCalendar={closeCalendar}/>
+      <BottomSide openCalendar={openCalendar} closeCalendar={closeCalendar} />
     </>
   );
 };

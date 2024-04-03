@@ -42,7 +42,7 @@
 
 @media (max-width: 768px) {
   .task-list__btn  {
-    bottom: 8%;
+    bottom: 10%;
     right: 4%;
   }
 }
@@ -74,13 +74,13 @@
   font-weight: 400;
   font-size: 25px;
   color: #000;
+  pointer-events: none;
 }
 
 .list-task__checkbox {
   width: 30px;
   height: 30px;
 }
-
 
 
   .checkbox-wrapper-39 *,
