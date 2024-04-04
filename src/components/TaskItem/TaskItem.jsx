@@ -20,12 +20,7 @@ const TaskItem = ({
     )["done"]
   );
 
-  console.log(isCheckedInput);
 
-  // const isCheckedHandler = () => {
-  //   setIsCheckedInput(!isCheckedInput)
-  //   updateIsDone(index, isCheckedInput)
-  // }
 
   return (
     <li

@@ -62,7 +62,7 @@ const MainAppPage = () => {
   return (
     <>
       {calendarIsOpen ? (
-        <div style={{height: '80vh', display: 'flex'}}>
+        <div style={{ height: "80vh", display: "flex" }}>
           <Calendar value={currentDate} onChange={changeDate} />
         </div>
       ) : (
@@ -97,7 +97,10 @@ const MainAppPage = () => {
               )}
             </header>
             <main>
-              <h1 className="title">{currentDate.toDateString()}</h1>
+              <div className="inner" style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px'}}>
+                <h1 className="title" style={{marginBottom: '0'}}>{currentDate.toDateString()}</h1>
+                <button className="inner__btn">Sort by tags</button>
+              </div>
               {showList ? (
                 <TaskList
                   showListHandler={showListHandler}

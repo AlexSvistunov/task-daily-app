@@ -25,8 +25,6 @@ const TaskList = ({
 }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [dataModal, setDataModal] = useState(null);
-  // const [list, setList] = useState([])
-  // console.log(list);
 
   const { email, token } = useAuth();
   const dispatch = useDispatch();
@@ -42,6 +40,35 @@ const TaskList = ({
     todos
       .filter((el) => el["day"] === currentDate.toLocaleDateString())
       .sort((a, b) => new Date(a.date) - new Date(b.date));
+
+
+    const todosTagsArray = []
+    const todosSortTags = []
+
+    todosForDate.forEach((todo) => {
+      if(!todosTagsArray.includes(todo.tag)) {
+        todosTagsArray.push(todo.tag)
+      } else {
+        return
+      }
+    })
+
+
+    todosTagsArray.forEach((tag) => {
+      todosSortTags.push({
+        [tag]: []
+      })
+    })
+
+    console.log(todosSortTags.forEach((object) => {
+      console.log(Object.keys(object));
+    }));
+
+    todosForDate.forEach((todo, index) => {
+      todosSortTags.forEach((object) => {
+        // if(todo.tag) === object
+      })
+    })
 
   if (isLoading) {
     return (
