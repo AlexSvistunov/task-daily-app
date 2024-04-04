@@ -53,22 +53,14 @@ const TaskList = ({
       }
     })
 
-
     todosTagsArray.forEach((tag) => {
+      const items = todosForDate.filter((todo) => todo.tag === tag)
       todosSortTags.push({
-        [tag]: []
+        [tag] : items
       })
     })
 
-    console.log(todosSortTags.forEach((object) => {
-      console.log(Object.keys(object));
-    }));
 
-    todosForDate.forEach((todo, index) => {
-      todosSortTags.forEach((object) => {
-        // if(todo.tag) === object
-      })
-    })
 
   if (isLoading) {
     return (
