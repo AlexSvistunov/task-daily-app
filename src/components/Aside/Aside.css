@@ -171,6 +171,12 @@
   
 } */
 
+@media(max-width: 1200px) {
+  .aside {
+    max-width: 350px;
+  }
+}
+
 @media(max-width: 768px) {
   .aside {
     display: none;

@@ -64,7 +64,7 @@ const MainAppPage = () => {
   return (
     <>
       {calendarIsOpen ? (
-        <div style={{ height: "80vh", display: "flex" }}>
+        <div>
           <Calendar value={currentDate} onChange={changeDate} />
         </div>
       ) : (

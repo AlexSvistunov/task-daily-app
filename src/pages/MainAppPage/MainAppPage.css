@@ -90,46 +90,33 @@
 }
 
 @media(max-width: 768px) {
-  .react-calendar__tile {
-    padding: 50px 52px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .react-calendar button {
-    font-size: 49px;
-  }
-
-
+ .react-calendar {
+    border: none;
+    width: 95%;
+    margin: 20px auto;
+    border-radius: 15px;
+    background: #e4c9f7;
+ }
 }
 
-
-@media(max-width: 650px) {
-  .react-calendar__tile {
-    padding: 40px 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .react-calendar button {
-    font-size: 38px;
+@media(max-width: 500px) {
+  .title {
+    font-size: 23px;
   }
 }
 
 
-@media(max-width: 440px) {
+@media(max-width: 370px) {
+  .title {
+    font-size: 18px;
+  }
+
   .react-calendar__tile {
-    padding: 30px 35px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    padding: 23px 0px;
   }
 
   .react-calendar button {
-    font-size: 28px;
+    font-size: 18px;
   }
 
-
-}
+} 
