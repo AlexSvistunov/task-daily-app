@@ -22,6 +22,7 @@ const TaskList = ({
   setIndex,
   arrayListInfo,
   setArrayListInfo,
+  isSortedByTags,
 }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [dataModal, setDataModal] = useState(null);
@@ -41,26 +42,40 @@ const TaskList = ({
       .filter((el) => el["day"] === currentDate.toLocaleDateString())
       .sort((a, b) => new Date(a.date) - new Date(b.date));
 
+  const todosTagsArray = [];
+  const todosSortTags = [];
 
-    const todosTagsArray = []
-    const todosSortTags = []
+  todosForDate.forEach((todo) => {
+    if (!todosTagsArray.includes(todo.tag)) {
+      todosTagsArray.push(todo.tag);
+    } else {
+      return;
+    }
+  });
 
-    todosForDate.forEach((todo) => {
-      if(!todosTagsArray.includes(todo.tag)) {
-        todosTagsArray.push(todo.tag)
-      } else {
-        return
-      }
-    })
+  todosTagsArray.forEach((tag) => {
+    const items = todosForDate.filter((todo) => todo.tag === tag);
+    todosSortTags.push({
+      [tag]: items,
+    });
+  });
 
-    todosTagsArray.forEach((tag) => {
-      const items = todosForDate.filter((todo) => todo.tag === tag)
-      todosSortTags.push({
-        [tag] : items
+  console.log(todosSortTags);
+
+  async function updateIsDone(index, isDone) {
+    const db = getDatabase();
+
+    const updates = {};
+
+    updates[`users/${token}/${index}/done`] = !isDone;
+
+    update(ref(db), updates)
+      .then(() => {
+        dispatch(getTodos(token));
+        console.log("success");
       })
-    })
-
-
+      .catch((error) => console.log(error.message));
+  }
 
   if (isLoading) {
     return (
@@ -77,19 +92,28 @@ const TaskList = ({
     );
   }
 
-  async function updateIsDone(index, isDone) {
-    const db = getDatabase();
+  console.log(todosSortTags);
 
-    const updates = {};
+  // console.log(todosSortTags[0]['Daily Routine'][0]);
+  todosSortTags?.forEach((tagObject) => {
+    tagObject[Object.keys(tagObject)].forEach((el) => console.log(el));
+  });
+  // {tagObject[Object.keys(tagObject)]}
 
-    updates[`users/${token}/${index}/done`] = !isDone;
-
-    update(ref(db), updates)
-      .then(() => {
-        dispatch(getTodos(token));
-        console.log("success");
-      })
-      .catch((error) => console.log(error.message));
+  if (isSortedByTags) {
+    return (
+      <>
+        {todosSortTags?.length &&
+          todosSortTags?.map((tagObject) => (
+            <>
+              <h3 className="tag">{Object.keys(tagObject)}</h3>
+              {tagObject[Object.keys(tagObject)].map((el) => (
+                <div key={el.id}>{el.title}</div>
+              ))}
+            </>
+          ))}
+      </>
+    );
   }
 
   return (

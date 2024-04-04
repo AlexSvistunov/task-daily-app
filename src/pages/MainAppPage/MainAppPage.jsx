@@ -26,6 +26,8 @@ const MainAppPage = () => {
   const [calendarIsOpen, setCalendarIsOpen] = useState(false);
   const [todoIsOpen, setTodoIsOpen] = useState(true);
 
+  const [isSortedByTags, setIsSortedByTags] = useState(false)
+
   const changeDate = (value) => {
     setCurrentDate(value);
   };
@@ -99,7 +101,7 @@ const MainAppPage = () => {
             <main>
               <div className="inner" style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px'}}>
                 <h1 className="title" style={{marginBottom: '0'}}>{currentDate.toDateString()}</h1>
-                <button className="inner__btn">Sort by tags</button>
+                <button className="inner__btn" onClick={() => setIsSortedByTags(!isSortedByTags)}>Sort by tags</button>
               </div>
               {showList ? (
                 <TaskList
@@ -107,6 +109,7 @@ const MainAppPage = () => {
                   currentDate={currentDate}
                   arrayListInfo={arrayListInfo}
                   setArrayListInfo={setArrayListInfo}
+                  isSortedByTags={isSortedByTags}
                 />
               ) : (
                 <CreateTask
