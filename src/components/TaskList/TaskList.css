@@ -82,6 +82,30 @@
   height: 30px;
 }
 
+.sort-list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.sort-item {
+
+}
+
+.sort-item__title {
+  margin: 0;
+  margin-bottom: 10px;
+  font-size: 22px;
+
+}
+
+
+.sort-item__todo-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
 
   .checkbox-wrapper-39 *,
   .checkbox-wrapper-39 *::before,

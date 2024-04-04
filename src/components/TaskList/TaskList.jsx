@@ -100,18 +100,31 @@ const TaskList = ({
   });
   // {tagObject[Object.keys(tagObject)]}
 
-  if (isSortedByTags) {
+  if (isSortedByTags && todosForDate.length) {
     return (
       <>
-        {todosSortTags?.length &&
-          todosSortTags?.map((tagObject) => (
-            <>
-              <h3 className="tag">{Object.keys(tagObject)}</h3>
-              {tagObject[Object.keys(tagObject)].map((el) => (
-                <div key={el.id}>{el.title}</div>
-              ))}
-            </>
-          ))}
+        <div className="sort-list">
+          {todosSortTags?.length &&
+            todosSortTags?.map((tagObject, index) => (
+              <div key={index} className="sort-item">
+                <h3 className="sort-item__title">{Object.keys(tagObject)}</h3>
+                <div className="sort-item__todo-inner">
+                  {tagObject[Object.keys(tagObject)].map((el) => (
+                    <TaskItem
+                      key={el.title}
+                      color={el.color}
+                      setModalIsOpen={setModalIsOpen}
+                      setDataModal={setDataModal}
+                      dataModal={dataModal}
+                      el={el}
+                      updateIsDone={updateIsDone}
+                      index={el.currentIndex}
+                    />
+                  ))}
+                </div>
+              </div>
+            ))}
+        </div>
       </>
     );
   }

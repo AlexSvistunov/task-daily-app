@@ -99,7 +99,7 @@ const MainAppPage = () => {
               )}
             </header>
             <main>
-              <div className="inner" style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px'}}>
+              <div className="inner" style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '50px'}}>
                 <h1 className="title" style={{marginBottom: '0'}}>{currentDate.toDateString()}</h1>
                 <button className="inner__btn" onClick={() => setIsSortedByTags(!isSortedByTags)}>Sort by tags</button>
               </div>
