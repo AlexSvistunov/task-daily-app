@@ -144,32 +144,6 @@
   padding: 15px;
 }
 
-/* 
-@media(max-width: 1200px) {
-  .aside {
-    visibility: hidden;
-    max-width: 300px;
-    transform: translateX(-200%);
-    transition: transform .35s ease-in-out, opacity .35s ease-in-out;
-    opacity: 0;
-  }
-
-  .aside.aside--active {
-    visibility: visible;
-    transform: translateX(0);
-    transition: transform .35s ease-in-out, opacity .35s ease-in-out;
-    opacity: 1;
-  }
-
-  .react-calendar button {
-    font-size: 15px;
-  }
-
-  .react-calendar__tile{
-    padding: 0 10px;
-  }
-  
-} */
 
 @media(max-width: 1200px) {
   .aside {

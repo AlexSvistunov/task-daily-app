@@ -1,7 +1,4 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-// import { getDoc } from "firebase/firestore";
-// import { doc } from "firebase/firestore";
-// import { db } from "../../firebase/firebase";
 
 import { getDatabase, ref, get, child } from "firebase/database";
 
