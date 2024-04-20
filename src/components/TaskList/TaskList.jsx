@@ -149,7 +149,7 @@ const TaskList = ({
             ))
         ) : (
           <img
-            src="src/assets/images/nothing-here.png"
+            src="/nothing-here.png"
             style={{ display: "block", margin: "200px auto" }}
           ></img>
         )}
@@ -176,7 +176,7 @@ const TaskList = ({
                 ))
             ) : (
               <img
-                src="src/assets/images/nothing-here.png"
+                src="/nothing-here.png"
                 style={{ display: "block", margin: "200px auto" }}
               ></img>
             )}
