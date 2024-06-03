@@ -1,8 +1,49 @@
-# React + Vite
+<h1>HabitHUB - task-manager для создания задач на каждый день</h1>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+[Посмотреть проект LIVE](https://alexsvistunov.github.io/task-daily-app/):
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<h2>Технологии:</h2>
+
++ Frontend: 
+React, Redux, CSS, HTML, react-spinners, react-calendar, react-router-dom, uuid
+
++ Backend: 
+Firebase
+<h2>Чем отличается от обычного task-app / todo:</h2>
+
+1. В этом task-app есть авторизация, которая подразумевает backend и redux
+
+2. Использование redux для хранения состояния пользователя и todo на определенный день
+
+3. Календарь по дням, а не просто todo на один день. Сложность возрастает в разы, так как есть пользователь, а также определенный день, в котором у него есть задачи
+
+4. Задачи хранятся в БД, а не в localstorage
+
+5. Использование backend
+
+<h2>Функционал: </h2>
+
++ Авторизация(login, register)
++ выбор даты на календаре
++  создание task(title, descr, color, tag)
++  редактирование task в открывающимся pop-up
++  удаление task
++   sort by tags
+
+<h2>Реализованные фичи:</h2>
+
++ Авторизация
++ Log out
++ Выбор дня на календаре
++ Создание/редактирование/удаление task на определенный день
++ Сортировка на день по тегам
++ Спиннер загрузки
+
+<h2>Проблемы, с которыми столкнулся:</h2>
+
+Проблемы, с которыми столкнулся в основном были связаны с Firebase. Например, я не мог хранить массив tasks
+
+<hr>
+
+### Автор: Alex Svistunov
